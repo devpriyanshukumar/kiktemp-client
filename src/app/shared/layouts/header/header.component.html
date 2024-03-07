@@ -1,0 +1,31 @@
+<div class="header-container">
+    <div class="grid">
+        <button class="hamburger-button" (click)="clickHamburgerIcon()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="company-details">
+            <img src="../../../../assets/img/kikblox_logo.webp" class="company-logo">
+        </div>
+        <div class="breadcrumb-app-desktop">
+            <app-breadcrumb></app-breadcrumb>
+        </div>
+        <div class="profile-section">
+            <p-avatar class="prof-img" image="../../../../assets/img/user-avatar.webp" styleClass="mr-2" size="large"
+                shape="circle"></p-avatar>
+            <!-- <div class="user-name">{{userName}}</div> -->
+            <div class="dropdown">
+                <button class="dropdown-button" (click)="toggleDropdown()" style="display: flex; align-items: end;">
+                    <div class="user-name">{{userName}}</div>
+                    <i class="fas fa-caret-down ml-2"></i>
+                </button>
+                <div class="dropdown-content" *ngIf="isDropdownOpen">
+                    <a href="/user-profile" (click)="navigateToUserProfile()"><i class="fas fa-user"></i>My Profile</a>
+                    <a (click)="logout()"><i class="fas fa-right-from-bracket"></i>Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="breadcrumb-app-mobile">
+    <app-breadcrumb></app-breadcrumb>
+</div>

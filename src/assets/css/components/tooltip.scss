@@ -1,0 +1,39 @@
+.p-tooltip {
+    .p-tooltip-text {
+        background: $shadow-cl;
+        color: $white;
+        padding: 0.5rem 0.5rem;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 6px;
+        font-size: 11px;
+    }
+
+    &.p-tooltip-right {
+        .p-tooltip-arrow {
+            border-right-color: $shadow-cl;
+        }
+    }
+
+    &.p-tooltip-left {
+        .p-tooltip-arrow {
+            border-left-color: $shadow-cl;
+        }
+    }
+
+    &.p-tooltip-bottom {
+        .p-tooltip-arrow {
+            border-bottom-color: $shadow-cl;
+        }
+    }
+    
+    &.p-tooltip-top {
+        .p-tooltip-arrow {
+            border-top-color: $shadow-cl;
+        }
+    }
+}
+
+
+
+
+

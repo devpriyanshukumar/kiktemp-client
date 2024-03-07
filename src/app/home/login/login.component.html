@@ -1,0 +1,81 @@
+<div class="login-page">
+    <div class="grid">
+        <div class="company-details col-10 md:col-3">
+            <img src="assets/img/kikblox_logo.webp" class="company-logo">
+        </div>
+    </div>
+
+    <form [formGroup]="loginForm" class="login-details">
+        <!-- Email-->
+        <div class="form-field">
+            <div class="grid">
+                <div class="col-10 sm:col-8 md:col-5 lg:col-4 xl:col-3">
+                    <div class="p-input-icon-left">
+                        <i class="icon fas fa-envelope"></i>
+                        <input pInputText #email class="input-field" placeholder="Email" formControlName="email" />
+                    </div>
+                    <div class="required"
+                        *ngIf="loginForm.controls['email'].hasError('required') && loginForm.controls['email'].touched">
+                        {{requiredField}}
+                    </div>
+                    <div class="required"
+                        *ngIf="loginForm.controls['email'].hasError('pattern') && loginForm.controls['email'].touched">
+                        {{enterValidInput}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Password -->
+        <div class="form-field">
+            <div class="grid">
+                <div class="col-10 sm:col-8 md:col-5 lg:col-4 xl:col-3">
+                    <div class="p-input-icon-left">
+                        <i class="icon fas fa-key"></i>
+                        <div class="password-input">
+                            <input [type]="passwordFieldType" pInputText #password class="input-field"
+                                placeholder="Password" formControlName="password" />
+                            <button type="button" (click)="togglePasswordVisibility()">
+                                <i class="icon fas"
+                                    [ngClass]="{'fa-eye': passwordFieldType === 'password', 'fa-eye-slash': passwordFieldType === 'text'}"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="required"
+                        *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">
+                        {{requiredField}}
+                    </div>
+                    <div class="forgot-password">
+                        <a [routerLink]="['/home/forgot-password']">Forgot Password?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid form-field">
+            <div class="col-10 sm:col-8 md:col-5 lg:col-4 xl:col-3">
+                <button (click)="login()" [loading]="submittingData" pButton label="LOGIN"
+                    [disabled]="loginForm.invalid" class="login-button"></button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="col-10 sm:col-8 md:col-5 lg:col-4 xl:col-3 signup-request">
+                Excited to calculate temperature rise ?
+                <a [routerLink]="['/home/sign-up-request']" target="_blank">Request Access</a>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="col-10 md:col-5 lg:col-4 copyright">
+                <i class="fa-regular fa-copyright"></i>2020 KIK LANKA (PVT) LTD
+            </div>
+        </div>
+    </form>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="submittingData">
+    <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+    <div class="loading-text">Loading...</div>
+</div>

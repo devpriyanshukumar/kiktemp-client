@@ -1,0 +1,192 @@
+<div class="content-body new-user-signup-content user-profile">
+    <h4 class="page-header">Edit Profile</h4>
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4" *ngIf="!isGettingData">
+            <form [formGroup]="userProfileForm">
+
+                <!-- Contact Person name -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="contactPersonname">Contact Person name <span class="required">*</span></label>
+                    <input pInputText id="contactPersonname" aria-describedby="contactPersonname-help" placeholder="Enter Contact Person name"
+                        class="custom-placeholder-color" formControlName="name" />
+                </div>
+                <div *ngIf="userProfileForm.get('name')?.invalid && (userProfileForm.get('name')?.dirty || userProfileForm.get('name')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="userProfileForm.get('name')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Company Name -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="organizationName">Company Name <span class="required">*</span></label>
+                    <input pInputText id="organizationName" aria-describedby="organizationName-help" placeholder="Enter Company name"
+                        class="custom-placeholder-color" formControlName="organizationName" />
+                </div>
+                <div *ngIf="userProfileForm.get('organizationName')?.invalid && (userProfileForm.get('organizationName')?.dirty || userProfileForm.get('organizationName')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="userProfileForm.get('organizationName')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Company Email Address -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="email">Company Email Address <span class="required">*</span></label>
+                    <input pInputText id="email" aria-describedby="email-help" placeholder="Enter Email Address"
+                        formControlName="email" />
+                </div>
+                <div *ngIf="userProfileForm.get('email')?.invalid && (userProfileForm.get('email')?.dirty || userProfileForm.get('email')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="userProfileForm.get('email')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                    <div *ngIf="userProfileForm.get('email')?.hasError('email')" class="error-message">
+                        {{enterValidInput}}
+                    </div>
+                </div>
+
+                <!-- Company Website -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="webSite">Company Website </label>
+                    <input pInputText id="webSite" aria-describedby="webSite-help"
+                        placeholder="Enter Company Website URL" formControlName="webSite" />
+                </div>
+                <div *ngIf="userProfileForm.get('webSite')?.invalid && (userProfileForm.get('webSite')?.dirty || userProfileForm.get('webSite')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="userProfileForm.get('webSite')?.hasError('pattern')" class="error-message">
+                        {{enterValidInput}}
+                    </div>
+                </div>
+
+                <!-- Country -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="country">Country <span class="required">*</span></label>
+                    <p-dropdown [options]="countryList" optionLabel="country" placeholder="Select country" (onChange)="onCountrySelect($event)"
+                        formControlName="country" styleClass="custom-drop-down" [filter]="true" filterBy="country" ></p-dropdown>
+                </div>
+                <div *ngIf="userProfileForm.get('country')?.invalid && (userProfileForm.get('country')?.dirty || userProfileForm.get('country')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="userProfileForm.get('country')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Contact Number -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Contact Number <span class="required">*</span></label>
+                    <div class="grid">
+                        <div class="col-2">
+                            <input pInputText id="username" formControlName="frontMask" aria-describedby="username-help" readonly />
+                        </div>
+                        <div class="col-10 pl-2">
+                            <input pInputText id="username" aria-describedby="username-help" placeholder="Enter Contact Number"
+                                formControlName="contactNumber" autocomplete="off"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="userProfileForm.get('contactNumber')?.invalid || (userProfileForm.get('contactNumber')?.dirty || userProfileForm.get('contactNumber')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="!userProfileForm.controls['contactNumber'].value" class="error-message">
+                        {{requiredField}}
+                    </div>
+                    <div *ngIf="contactNumberControl?.value.length < contactNumberMinLength || contactNumberControl?.hasError('pattern')" class="error-message">
+                        &nbsp;{{enterValidInput}}
+                    </div>
+                </div>
+            </form>
+            <div class="grid">
+                <div class="col-12 flex flex-row justify-content-end mt-5 mb-3">
+                    <p-button label="RESET" styleClass="cancel-btn" (click)="resetForm()" ></p-button>
+                    <button label="UPDATE" class="profile-update-btn" (click)="saveForm()" [disabled]="isDisableUpdateButton || !userProfileForm.controls['name'].value || 
+                    !userProfileForm.controls['organizationName'].value || !userProfileForm.controls['contactNumber'].value ||
+                    !userProfileForm.controls['country'].value || (userProfileForm.get('contactNumber')?.hasError('minLength') ? true : false) ||
+                    (userProfileForm.get('webSite')?.hasError('pattern') ? true : false) || contactNumberControl?.value.length < contactNumberMinLength || contactNumberControl?.hasError('pattern')" pButton></button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4 " *ngIf="isGettingData">
+            <div class="kiktemp-loader">
+                <img src="assets/img/kikblox_logo_rounded.webp" alt="Logo" class="spinner" />
+                <div class="loading-text">Loading...</div>
+              </div>
+        </div>
+        <div class="col-0 md:col-6 lg:col-7 image-container" *ngIf="screenWidth > 768">
+            <img src="assets/img/edit_profile.webp" alt="">
+        </div>
+    </div>
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4">
+            <h2>Change Password</h2>
+            <p class="ml-5">Click here to access the password change form and update your account's login credentials securely.</p>
+            <div class="col-12 text-center mt-4">
+                <p-button label="CHANGE PASSWORD" icon="fa-solid fa-lock" iconPos="left" styleClass="change-password-btn" (click)="changePassword()" ></p-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog [(visible)]="isShowCurrentPasswordModal" class="change-password-modal" [modal]="true" (onHide)="onHide()">
+    <ng-template pTemplate="header">
+        <h2 class="mb-6" style="width: 100%;">Change Password</h2>
+    </ng-template>
+    <div class="grid">
+        <form [formGroup]="passwordForm">
+            <div class="col-12 content">
+                <p class="text-center">To proceed with the password change, please enter your current password.</p>
+                <p-password [toggleMask]="true" [feedback]="false" formControlName="currentPassword"></p-password>
+                <div class="col-12 mt-3 text-center md:mt-4 lg:mt-6 sm:mt-3 ">
+                    <button label="NEXT" (click)="validateCurrentPassword()"
+                        [disabled]="!passwordForm.controls['currentPassword'].value" pButton></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="isShowPasswordChangeModal" class="change-password-modal" [modal]="true" (onHide)="onHide()">
+    <ng-template pTemplate="header">
+        <h2 class="mb-6" style="width: 100%;">Change Password</h2>
+    </ng-template>
+    <div class="grid">
+        <form [formGroup]="passwordForm">
+            <div class="col-12 content">
+                <p-password [toggleMask]="true" formControlName="newPassword"  (keyup)="validatePasswordLength()" class="password-input"></p-password>
+                <div *ngIf="!validPasswordLength" class="error-container mt-2 justify-content-center ml-0">
+                    <div class="error-message">
+                        {{passwordLengthError}}
+                    </div>
+                </div>
+                <p-password [toggleMask]="true" formControlName="reEnteredPassword" [feedback]="false" (keyup)="arePasswordsEqual()" class="password-input"></p-password>
+                <div *ngIf="isPasswordMissMatch && (passwordForm.get('reEnteredPassword')?.dirty || passwordForm.get('reEnteredPassword')?.touched)"
+                    class="error-container mt-2 justify-content-center ml-0">
+                    <div  class="error-message pl-2 pr-2">
+                        {{passwordMissmatch}}
+                    </div>
+                </div>
+                <div class="col-12 text-center mt-6">
+                    <button label="CHANGE PASSWORD" (click)="updatePassword()" [disabled]="passwordForm.get('newPassword')?.hasError('minLength') ? true : false
+                    || !(passwordForm.controls['newPassword'].value === passwordForm.controls['reEnteredPassword'].value) || !passwordForm.controls['newPassword'].value
+                    || !passwordForm.controls['reEnteredPassword'].value" pButton></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</p-dialog>
+
+<p-dialog [(visible)]="isShowPasswordChangeSuccessModal" class="change-password-modal" [modal]="true" (onHide)="onHide()">
+    <ng-template pTemplate="header">
+        <h2 class="mb-6" style="width: 100%;">Change Password</h2>
+    </ng-template>
+    <div class="grid">
+        <div class="col-12 text-center pl-4 pr-4 confirm-content">
+            <p>Your password has been changed successfully. You can now login with your new password.</p>
+            <div class="col-12 confirm-modal">
+                <p-button label="CLOSE" (click)="onClose()"></p-button>
+            </div>
+        </div>
+    </div>
+</p-dialog>
+
+<p-toast></p-toast>

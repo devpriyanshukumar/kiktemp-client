@@ -1,0 +1,156 @@
+<div class="content-body past-projects-page">
+    <h4 class="page-header">Past Projects</h4>
+    <div class="card">
+        <p-tabView styleClass="tabview-custom" (onChange)="handleTabClick($event)">
+            <p-tabPanel>
+                <ng-template pTemplate="header">
+                    <span>My Projects</span>
+                </ng-template>
+                <div class="tab-content">
+                    <div class="search-container">
+                        <div class="p-inputgroup col-12 sm:col-5">
+                            <span class="p-inputgroup-addon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                            <input [(ngModel)]="searchInputValue" title="Search by Project No / Project Name" pInputText
+                                placeholder="Search by Project No / Project Name" (keyup)="searchProject($event)">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div *ngIf="projectDetails.length !== 0">
+                            <p-table [value]="projectDetails" styleClass="p-datatable-striped"
+                                [tableStyle]="{'min-width': '50rem'}">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th pSortableColumn="CREATED_DATE" style="width: 10%;">Date <p-sortIcon
+                                                [field]="'CREATED_DATE'"></p-sortIcon>
+                                        </th>
+                                        <th style="width: 15%;">Project No</th>
+                                        <th style="width: 20%;">Project Name</th>
+                                        <th style="width: 15%;">Installation Type</th>
+                                        <th style="width: 13%;">Demand Factor</th>
+                                        <th style="width: 15%;">Elevation (m)</th>
+                                        <th style="width: 12%;">Action</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-project>
+                                    <tr>
+                                        <td style="text-align: center;">{{project.CREATED_DATE}}</td>
+                                        <td style="text-align: center;">{{project.PROJECT_ID}}</td>
+                                        <td style="text-align: center;">{{project.PROJECT_NAME}}</td>
+                                        <td style="text-align: center;">{{project.INSTALLATION_TYPE}}</td>
+                                        <td style="text-align: center;">{{project.DEMAND_FACTOR}}</td>
+                                        <td style="text-align: center;">{{project.ELEVATION}}</td>
+                                        <td>
+                                            <button class="view-project-btn" (click)="viewProject(project)"><span *ngIf="screenWidth > mobileWidth" class="btn-text">View Project</span>
+                                                <i class="fa-solid fa-square-arrow-up-right navigate"></i>
+                                            </button>
+                                            <button class="delete-project-btn"
+                                                (click)="clickDelete(project.PROJECT_ID)"><span
+                                                *ngIf="screenWidth > mobileWidth" class="btn-text">Delete</span>
+                                                <i class="fa-solid fa-trash delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                        <div class="no-projects" *ngIf="projectDetails.length === 0">
+                            <h3>No Projects found!</h3>
+                            <img src="../../../assets/img/no_data.webp" class="no-data-img">
+                        </div>
+                    </div>
+
+                    <div *ngIf="projectDetails.length !== 0">
+                        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [pageLinkSize]="3"
+                            [rows]="tableRowsPerPage" [totalRecords]="totalRecords"></p-paginator>
+                    </div>
+                </div>
+            </p-tabPanel>
+            <p-tabPanel *ngIf="userType !== 'customer' && userType !== 'directCustomer'">
+                <ng-template pTemplate="header">
+                    <span>All Projects</span>
+                </ng-template>
+                <div class="tab-content">
+                    <div class="search-container">
+                        <div class="p-inputgroup col-12 sm:col-5">
+                            <span class="p-inputgroup-addon">
+                                <i class="fas fa-search"></i>
+                            </span>
+                            <input [(ngModel)]="searchInputValue" title="Search by Project No / Project Name" pInputText
+                                placeholder="Search by Project No / Project Name" (keyup)="searchProject($event)">
+                        </div>
+                    </div>
+
+                    <div>
+                        <div *ngIf="projectDetails.length !== 0">
+                            <p-table [value]="projectDetails" styleClass="p-datatable-striped"
+                                [tableStyle]="{'min-width': '50rem'}">
+                                <ng-template pTemplate="header">
+                                    <tr>
+                                        <th pSortableColumn="CREATED_DATE" style="width: 10%;">Date <p-sortIcon
+                                                [field]="'CREATED_DATE'"></p-sortIcon>
+                                        </th>
+                                        <th style="width: 10%;">Project No</th>
+                                        <th [style.width]="userType === 'distributor' ? '25%' : '10%'">Project Name
+                                        </th>
+                                        <th *ngIf="userType === 'admin'" style="width: 20%;">
+                                            Distributor Name</th>
+                                        <th *ngIf="userType === 'admin' || userType === 'distributor'"
+                                            style="width: 10%;">Customer Name</th>
+                                        <th style="width: 10%;">Installation Type</th>
+                                        <th style="width: 8%;">Demand Factor</th>
+                                        <th style="width: 10%;">Elevation (m)</th>
+                                        <th [style.width]="userType === 'distributor' ? '17%' : '12%'">Action</th>
+                                    </tr>
+                                </ng-template>
+                                <ng-template pTemplate="body" let-project>
+                                    <tr>
+                                        <td style="text-align: center;">{{project.CREATED_DATE}}</td>
+                                        <td style="text-align: center;">{{project.PROJECT_ID}}</td>
+                                        <td style="text-align: center;">{{project.PROJECT_NAME}}</td>
+                                        <td style="text-align: center;" *ngIf="userType === 'admin'">{{project.PARENT_NAME ?
+                                            project.PARENT_NAME : '-'}}</td>
+                                        <td style="text-align: center;" *ngIf="userType === 'admin' || userType === 'distributor'">
+                                            {{project.NAME ? project.NAME : '-'}}</td>
+                                        <td style="text-align: center;">{{project.INSTALLATION_TYPE}}</td>
+                                        <td style="text-align: center;">{{project.DEMAND_FACTOR}}</td>
+                                        <td style="text-align: center;">{{project.ELEVATION}}</td>
+                                        <td>
+                                            <button class="view-project-btn"><span *ngIf="screenWidth > mobileWidth" class="btn-text" (click)="viewProject(project)">View Project</span>
+                                                <i class="fa-solid fa-square-arrow-up-right navigate"></i>
+                                            </button>
+                                            <button *ngIf="userId === project.USER_ID"
+                                                (click)="clickDelete(project.PROJECT_ID)"
+                                                class="delete-project-btn"><span *ngIf="screenWidth > mobileWidth" class="btn-text">Delete</span>
+                                                <i class="fa-solid fa-trash delete"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-template>
+                            </p-table>
+                        </div>
+
+                        <div class="no-projects" *ngIf="projectDetails.length === 0">
+                            <h3>No Projects found!</h3>
+                            <img src="../../../assets/img/no_data.webp" class="no-data-img">
+                        </div>
+                    </div>
+
+                    <div *ngIf="projectDetails.length !== 0">
+                        <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [pageLinkSize]="3"
+                            [rows]="tableRowsPerPage" [totalRecords]="totalRecords"></p-paginator>
+                    </div>
+                </div>
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+    <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+    <div class="loading-text">Loading...</div>
+</div>

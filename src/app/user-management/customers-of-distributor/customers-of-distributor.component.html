@@ -1,0 +1,67 @@
+<div class="content-body customers-of-distributor-page">
+    <h4 class="page-header">Customer List of Distributor - <span
+            class="distributor-name">{{distributorOrganizationName}}</span></h4>
+    <div class="card">
+        <div class="search-container">
+            <div class="p-inputgroup col-12 sm:col-6">
+                <span class="p-inputgroup-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input title="Search by Customer Organization / Customer Name / Distributor Organization / Email"
+                    pInputText
+                    placeholder="Search by Customer Organization / Customer Name / Distributor Organization / Email"
+                    (keyup)="searchCustomer($event)">
+            </div>
+        </div>
+
+        <div *ngIf="searchResultDataVM.length !== 0">
+            <p-table [value]="searchResultDataVM" styleClass="p-datatable-striped"
+                [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="JOINED_DATE" style="width: 10%;">Date <p-sortIcon
+                                [field]="'JOINED_DATE'"></p-sortIcon>
+                        </th>
+                        <th style="width: 20%;">Organization Name</th>
+                        <th style="width: 15%;">Contact Person Name</th>
+                        <th style="width: 15%;">Email</th>
+                        <th style="width: 15%;">Country</th>
+                        <th style="width: 10%;">Status</th>
+                        <th style="width: 15%;">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                    <tr>
+                        <td>{{customer?.JOINED_DATE}}</td>
+                        <td [title]="customer?.CHILD_ORGANIZATION">{{customer?.CHILD_ORGANIZATION | truncate: 25}}</td>
+                        <td [title]="customer?.CHILD_NAME">{{customer?.CHILD_NAME | truncate: 20}}</td>
+                        <td [title]="customer?.CHILD_EMAIL">{{customer?.CHILD_EMAIL | truncate: 25}}</td>
+                        <td>{{customer?.CHILD_COUNTRY}}</td>
+                        <td>{{customer?.CHILD_STATUS | uppercase}}</td>
+                        <td>
+                            <button class="view-customer-btn" (click)="viewCustomer(customer?.CHILD_USER_ID, customer?.CHILD_USER_TYPE)">View Customer
+                                <i class="fa-solid fa-square-arrow-up-right navigate"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <div class="no-customers" *ngIf="searchResultDataVM.length === 0">
+            <h3>No Customers found!</h3>
+            <img src="../../../assets/img/no_data.webp" class="no-data-img">
+        </div>
+    </div>
+
+    <div *ngIf="searchResultDataVM.length !== 0">
+        <p-paginator (onPageChange)="onPaginate($event)" [first]="first" [pageLinkSize]="3" [rows]="tableRowsPerPage"
+            [totalRecords]="totalResults"></p-paginator>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+    <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+    <div class="loading-text">Loading...</div>
+</div>

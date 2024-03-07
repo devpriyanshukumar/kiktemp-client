@@ -1,0 +1,67 @@
+.p-dialog {
+    border-radius: 3px;
+    box-shadow: 0 1px 3px #000000;
+    border: 0 none;
+    z-index: 1000;
+
+    .p-dialog-header {
+        border-bottom: 0 none;
+        background: #ffffff;
+        color: #343a40;
+        padding: 1.5rem;
+        border-top-right-radius: 3px;
+        border-top-left-radius: 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .p-dialog-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #185ADB;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .p-dialog-header-icon {
+            width: 2rem;
+            height: 2rem;
+            color: red;
+            border: 0 none;
+            background: transparent;
+            border-radius: 50%;
+            transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+            margin-right: 0.5rem;
+            text-align: right;
+
+            &enabled {
+                &:hover {
+                    color: #343a40;
+                    border-color: transparent;
+                    background: #e9ecef;
+                }
+
+                &:focus {
+                    outline: 0 none;
+                    outline-offset: 0;
+                    box-shadow: 0 0 0 0.2rem #BFDBFE;
+                }
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .p-dialog-content {
+        background: #fbfbfb;
+        color: #495057;
+    }
+}
+
+@media (max-width: 768px) {
+    .p-dynamic-dialog {
+        width: 80% !important;
+    }
+}

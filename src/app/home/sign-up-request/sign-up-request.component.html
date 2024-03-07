@@ -1,0 +1,116 @@
+<section class="sign-up-request-page">
+  <div class="grid">
+    <div class="company-details col-10 md:col-3">
+      <img src="assets/img/kikblox_logo.webp" class="company-logo">
+      <p class="message">Share your organization's details, and we'll contact you soon.</p>
+    </div>
+  </div>
+
+  <form [formGroup]="signupRequestForm" class="request-details">
+    <!-- Organization Name -->
+    <div class="grid form-field">
+      <span class="col-10 md:col-5 lg:col-4 xl:col-3 p-float-label">
+        <input pInputText id="organizationName" formControlName='organizationName' />
+        <label htmlFor="organizationName">Organization Name <span class="required">*</span></label>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['organizationName'].hasError('required') && signupRequestForm.controls['organizationName'].touched">{{requiredField}}</span>
+      </span>
+    </div>
+
+    <!-- Contact Person Name -->
+    <div class="grid form-field">
+      <span class="col-10 md:col-5 lg:col-4 xl:col-3 p-float-label">
+        <input pInputText id="contactPersonName" formControlName='contactPersonName' />
+        <label htmlFor="contactPersonName">Contact Person Name <span class="required">*</span></label>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['contactPersonName'].hasError('required') && signupRequestForm.controls['contactPersonName'].touched">{{requiredField}}</span>
+      </span>
+    </div>
+
+    <!-- Email Address -->
+    <div class="grid form-field">
+      <span class="col-10 md:col-5 lg:col-4 xl:col-3 p-float-label">
+        <input pInputText id="emailAddress" formControlName='emailAddress' />
+        <label htmlFor="emailAddress">Email Address <span class="required">*</span></label>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['emailAddress'].hasError('required') && signupRequestForm.controls['emailAddress'].touched">{{requiredField}}</span>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['emailAddress'].hasError('pattern') && signupRequestForm.controls['emailAddress'].touched">{{enterValidInput}}</span>
+      </span>
+    </div>
+
+    <!-- Country -->
+    <div class="grid form-field">
+      <span class="col-10 md:col-5 lg:col-4 xl:col-3 dropdown">
+        <label *ngIf="countrySelected" style="font-size: 10px; margin-left: 10px;">Country <span
+            class="required">*</span></label>
+        <p-dropdown [options]="countries" formControlName='country' optionLabel="country" [filter]="true" filterBy="country"
+          placeholder="Country *" (onChange)="selectCountry($event)">
+        </p-dropdown>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['country'].hasError('required') && signupRequestForm.controls['country'].touched">{{requiredField}}</span>
+      </span>
+    </div>
+
+    <!-- Contact Number -->
+    <div class="grid form-field">
+      <span class="col-10 md:col-5 lg:col-4 xl:col-3">
+        <label htmlFor="emailAddress" style="font-size: 10px; margin-left: 10px;">Contact Number <span class="required">*</span></label>
+        <div class="grid">
+            <div class="col-2">
+                <input pInputText id="username" formControlName="frontMask" aria-describedby="username-help" readonly />
+            </div>
+            <div class="col-10 pl-2">
+                <input pInputText id="username" aria-describedby="username-help" placeholder="Enter Contact Number"
+                    formControlName="contactNumber" autocomplete="off"/>
+            </div>
+        </div>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['contactNumber'].hasError('required') && (signupRequestForm.controls['contactNumber'].touched || signupRequestForm.controls['contactNumber'].dirty)">{{requiredField}}</span>
+        <span class="required"
+          *ngIf="(signupRequestForm.controls['contactNumber'].touched || signupRequestForm.controls['contactNumber'].dirty) && ((contactNumberControl?.value.length < contactNumberMinLength) || signupRequestForm.controls['contactNumber'].hasError('pattern'))">{{enterValidInput}}</span>
+      </span>
+    </div>
+
+    <!-- Website -->
+    <div class="grid form-field">
+      <span class="col-10 md:col-5 lg:col-4 xl:col-3 p-float-label">
+        <input pInputText id="website" formControlName='website' />
+        <label htmlFor="website">Website</label>
+        <span class="required"
+          *ngIf="signupRequestForm.controls['website'].hasError('pattern') && signupRequestForm.controls['website'].touched">{{enterValidInput}}
+        </span>
+      </span>
+    </div>
+
+    <div class="grid form-field">
+      <div class="col-10 md:col-5 lg:col-4 xl:col-3">
+        <button pButton title="Click here to review Terms of Service" class="terms-button" [loading]="loadingTerms"
+          (click)="openTerms()">
+          {{ termsAccepted ? 'Terms of Service - ' : 'Click here to review Terms of Service' }}
+          <i class="fa fa-square-check" *ngIf="termsAccepted" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="grid form-field">
+      <div class="col-10 md:col-5 lg:col-4 xl:col-3">
+        <button pButton [label]="submittingRequest ? 'SUBMITTING REQUEST...' : 'REQUEST ACCESS'"
+          class="request-access-button" [loading]="submittingRequest" (click)="submitRequest()"
+          [disabled]="signupRequestForm.invalid || !termsAccepted || contactNumberControl?.value.length < contactNumberMinLength"></button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="col-10 md:col-5 lg:col-4 copyright">
+        <i class="fa-regular fa-copyright"></i> 2020 KIK LANKA (PVT) LTD
+      </div>
+    </div>
+  </form>
+</section>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="submittingRequest || isGettingData">
+  <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+  <div class="loading-text">Loading...</div>
+</div>

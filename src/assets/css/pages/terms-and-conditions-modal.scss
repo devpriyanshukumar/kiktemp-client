@@ -1,0 +1,76 @@
+.terms-and-conditions-modal {
+    margin: 0px 20px 20px 20px;
+
+    .grid {
+        padding-bottom: 15px;
+    }
+
+    .custom-list {
+        list-style: none;
+        text-align: justify;
+
+        li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 10px;
+            font: 12px Arial, sans-serif;
+            color: #19499D;
+            line-height: 1.3;
+            text-indent: -10px;
+        }
+
+        li::before {
+            content: "\2022";
+            font: 20px Arial, sans-serif;
+            color: #185ADB;
+            position: relative;
+            right: 20px;
+            top: 4px;
+        }
+    }
+
+    .p-checkbox {
+        display: flex;
+        align-items: center;
+
+        .p-checkbox-box {
+            width: 15px !important;
+        }
+    }
+
+    .p-checkbox-label {
+        color: #185ADB;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .accept-btn-row {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+
+        .accept-btn {
+            background-color: #185ADB;
+        }
+    }
+
+    @media (max-width: 768px) {
+        margin: 5px 5px 15px 5px;
+
+        .custom-list {
+            padding-left: 0px;
+
+            li {
+                font-size: 11px;
+                margin-left: 0px;
+                text-indent: 0px;
+                padding-left: 0px;
+            }
+
+            li::before {
+                right: 0px;
+                top: 4px;
+            }
+        }
+    }
+}

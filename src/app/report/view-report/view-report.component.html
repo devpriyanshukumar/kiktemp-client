@@ -1,0 +1,214 @@
+<div class="content-body">
+    <div class="view-report">
+        <div class="download-report-btn-row">
+            <button icon="fa-solid fa-circle-down" pButton label="Download Report" class="download-report-btn"
+                (click)="generatePDF()"></button>
+        </div>
+        <div class="report-content">
+            <div id="report-body" *ngIf="!isGettingData">
+                <div class="logo-div">
+                    <img src="../../../assets/img/kikblox_logo.webp" class="company-logo">
+                </div>
+
+                <div class="report-title">
+                    <p>Calculation of the temperature rise of air inside enclosures</p>
+                </div>
+                <table id="table1" class="table1">
+                    <col class="col0">
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col5">
+                    <col class="col6">
+                    <tbody>
+                        <tr>
+                            <td colspan="4"><b>Customer/ Plant</b></td>
+                            <td colspan="3">{{reportData?.customerName}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Project No</b></td>
+                            <td colspan="3">{{reportData?.projectNo}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Cubicle No</b></td>
+                            <td colspan="3">{{reportData?.projectNo + '_CUB_' + cubicleId}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Project Name</b></td>
+                            <td colspan="3">{{reportData?.projectName}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Cubicle Position</b></td>
+                            <td colspan="3">{{reportData?.cubiclePosition}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Installation Type</b></td>
+                            <td colspan="3">{{reportData?.installationType}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><b>Demand Factor</b></td>
+                            <td colspan="3">{{reportData?.demandFactor}}</td>
+                        </tr>
+                        <tr>
+                            <td style="vertical-align: middle;" rowspan="3"><b>Relevant dimensions for temperature
+                                    rise</b></td>
+                            <td><b>Height</b></td>
+                            <td>{{reportData?.height | number}}</td>
+                            <td>mm</td>
+                            <td><b>Type of installation</b></td>
+                            <td colspan="2">{{reportData?.installationType}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Width</b></td>
+                            <td>{{reportData?.width | number}}</td>
+                            <td>mm</td>
+                            <td><b>Ventilation openings</b></td>
+                            <td colspan="2">{{reportData?.airInletOpenings > 0 ? 'Yes' : 'No'}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Depth</b></td>
+                            <td>{{reportData?.depth | number}}</td>
+                            <td>mm</td>
+                            <td><b>No of horizontal partitions</b></td>
+                            <td colspan="2">{{reportData?.horizontalPartitions}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table id="table2" class="table2" style="margin-top: 20px;">
+                    <col class="col0">
+                    <col class="col1">
+                    <col class="col2">
+                    <col class="col3">
+                    <col class="col4">
+                    <col class="col5">
+                    <tbody class="text-center">
+                        <tr class="text-bold text-center">
+                            <td class="align-middle" rowspan="7">Effective cooling surface</td>
+                            <td><img class="panel" src="../../../assets/img/panel.png"></td>
+                            <td class="align-middle">Dimensions (m x m)</td>
+                            <td class="align-middle">Ao (m²)</td>
+                            <td class="align-middle">Surface factor (b)</td>
+                            <td class="align-middle">Ao x b (m²)</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left text-bold">Top</td>
+                            <td>{{reportData?.effectiveCoolingSurface.top.dimension}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.top.area}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.top.surfaceFactor}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.top.effectiveArea}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left text-bold">Front</td>
+                            <td>{{reportData?.effectiveCoolingSurface.front.dimension}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.front.area}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.front.surfaceFactor}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.front.effectiveArea}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left text-bold">Rear</td>
+                            <td>{{reportData?.effectiveCoolingSurface.back.dimension}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.back.area}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.back.surfaceFactor}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.back.effectiveArea}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left text-bold">Left-hand side</td>
+                            <td>{{reportData?.effectiveCoolingSurface.left.dimension}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.left.area}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.left.surfaceFactor}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.left.effectiveArea}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left text-bold">Right-hand side</td>
+                            <td>{{reportData?.effectiveCoolingSurface.right.dimension}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.right.area}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.right.surfaceFactor}}</td>
+                            <td>{{reportData?.effectiveCoolingSurface.right.effectiveArea}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4">Ae = Σ (Ao x b) = Total</td>
+                            <td class="text-bold">{{reportData?.effectiveArea}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table id="table3" class="table3" style="margin-top: 20px;">
+                    <col class="col0">
+                    <col class="col1">
+                    <tbody class="text-center">
+                        <tr>
+                            <td colspan="2" class="text-bold">With an effective cooling surface Ae</td>
+                        </tr>
+                        <tr class="text-bold">
+                            <td>Exceeding 1.25 m²</td>
+                            <td>Not exceeding 1.25 m²</td>
+                        </tr>
+                        <tr>
+                            <td><img class="eqn1" src="../../../assets/img/eqn_1.png">
+                                <p class="eqn-result">f = {{reportData?.effectiveArea > 1.25 ? reportData?.f : 'N/A'}}
+                                </p>
+                            </td>
+                            <td><img class="eqn2" src="../../../assets/img/eqn_2.png">
+                                <p class="eqn-result">g = {{reportData?.effectiveArea < 1.25 ? reportData?.g : 'N/A'
+                                        }}</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table id="table4" class="table4" style="margin-top: 20px;">
+                    <col class="col0">
+                    <col class="col1">
+                    <tbody>
+                        <tr>
+                            <td class="text-bold">Air inlet openings (cm²)</td>
+                            <td>{{reportData?.airInletOpenings | number}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Enclosure constant (k)</td>
+                            <td>{{reportData?.k}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Factor for horizontal partitions (d)</td>
+                            <td>{{reportData?.d}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Effective power loss (P)</td>
+                            <td>{{reportData?.powerloss | number}}</td>
+                        </tr>
+                        <tr>
+                            <td><img class="eqn3" src="../../../assets/img/eqn_3.png"></td>
+                            <td>{{reportData?.px | number}}</td>
+                        </tr>
+                        <tr>
+                            <td><img class="eqn4" src="../../../assets/img/eqn_4.png"></td>
+                            <td>{{reportData?.t50 | number}}</td>
+                        </tr>
+                        <tr>
+                            <td class="text-bold">Temperature distribution factor (c)</td>
+                            <td>{{reportData?.c}}</td>
+                        </tr>
+                        <tr>
+                            <td><img class="eqn5" src="../../../assets/img/eqn_5.png"></td>
+                            <td>{{reportData?.t100 | number}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="chart" class="chart" style="margin-top: 40px;">
+                <p *ngIf="!isGettingData"><b>Characteristic Curve</b></p>
+                <canvas style="margin-top: 50px;margin-bottom: 50px;" id="tempRiseChart" width="400"
+                    height="400"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+    <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+    <div class="loading-text">Loading...</div>
+</div>

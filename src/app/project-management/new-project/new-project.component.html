@@ -1,0 +1,85 @@
+<div class="content-body new-project-page">
+  <div class="page-header">Create New Project</div>
+
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4" *ngIf="!isGettingData">
+      <form [formGroup]="newProjectForm">
+
+        <!-- Project Name -->
+        <div class="form-field">
+          <label htmlFor="projectName">Project Name <span class="required">*</span></label>
+          <input pInputText id="projectName" formControlName="projectName" placeholder="Enter Project Name" />
+        </div>
+
+        <!-- Type of Installation -->
+        <div class="form-field">
+          <label htmlFor="typeOfInstallation">Type of Installation <span class="required">*</span></label>
+          <p-dropdown optionLabel="value" id="typeOfInstallation" styleClass="custom-drop-down"
+            [options]="installationTypes" formControlName="typeOfInstallation" placeholder="Select Installation Type">
+          </p-dropdown>
+        </div>
+
+        <!-- Demand Factor -->
+        <div class="form-field">
+          <label htmlFor="demandFactor">Demand Factor <span class="required">*</span></label>
+          <input pInputText id="demandFactor" formControlName="demandFactor" placeholder="Enter Demand Factor" />
+          
+          <span class="required mt-2" *ngIf="newProjectForm.controls['demandFactor'].hasError('pattern') && newProjectForm.controls['demandFactor'].touched">{{enterValidInput}}</span>
+        </div>
+
+        <!-- Elevation -->
+        <div class="form-field">
+          <label htmlFor="elevation">Elevation (Meters above sea level) <span class="required">*</span></label>
+          <p-dropdown id="elevation" styleClass="custom-drop-down" [options]="elevationArray"
+            formControlName='elevation' optionLabel="elevation" placeholder="Select Elevation">
+          </p-dropdown>
+        </div>
+
+        <!-- Ambient Temperature -->
+        <div class="form-field">
+          <label htmlFor="ambientTemperature">Ambient Temperature (&#8451;) <span class="required">*</span></label>
+          <input pInputText formControlName='ambientTemperature' id="ambientTemperature"
+            placeholder="Enter Ambient Temperature" />
+          
+          <span class="required mt-2" *ngIf="newProjectForm.controls['ambientTemperature'].hasError('pattern') && newProjectForm.controls['ambientTemperature'].touched">{{enterValidInput}}</span>
+        </div>
+
+        <!-- button -->
+        <div class="form-field flex flex-row justify-content-end mt-5 mb-3">
+          <p-button label="Reset" styleClass="reset-btn" (click)="resetForm()"></p-button>
+          <button pButton [label]="savingData ? 'Saving...' : 'Save'" [disabled]="newProjectForm.invalid"
+            [loading]="savingData" class="save-btn" (click)="submitRequest()"></button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4 " *ngIf="isGettingData">
+      <div class="kiktemp-loader">
+        <img src="assets/img/kikblox_logo_rounded.webp" alt="New Project Image" class="spinner" />
+        <div class="loading-text">Loading...</div>
+      </div>
+    </div>
+
+    <div class="col-0 md:col-6 lg:col-7 image-container" *ngIf="screenWidth > 768">
+      <img src="assets/img/new_project.webp" alt="">
+    </div>
+  </div>
+</div>
+
+<p-toast></p-toast>
+
+<p-dialog [modal]="true" [(visible)]="isShowConfirm" class="new-project-confirmation" (onHide)="closeConfirmPopup()">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #185ADB;">Project Details Submitted</h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 new-project-confirm-content text-center">
+      <p>Your project details has been successfully recorded, and we're ready to move forward. Now let's dive into adding cubicle details to proceed.</p>
+
+      <div class="col-12 flex flex-row justify-content-end mt-5 mb-3">
+        <p-button label="CANCEL" styleClass="reset-btn" (click)="cancelCubicleCreation()"></p-button>
+        <p-button label="START CUBICLE SETUP" styleClass="save-btn" (click)="navigateCubicleCreation()"></p-button>
+      </div>
+    </div>
+  </div>
+</p-dialog>

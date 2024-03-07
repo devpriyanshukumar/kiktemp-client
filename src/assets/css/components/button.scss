@@ -1,0 +1,302 @@
+.p-button {
+  padding: 0px;
+  border-color: transparent;
+  box-shadow: none;
+  border-radius: 3px;
+  margin: 0 2px !important;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s, box-shadow 0.5s, opacity 1s;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border: none;
+  color: $inverse-cl;
+  @include btn-hover($orchid-cl);
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  .p-button-icon {
+    margin-right: 6px;
+  }
+
+  &.p-button-primary {
+    @include btn-hover($prime-cl);
+  }
+
+  &.p-button-default {
+    @include btn-hover($default);
+  }
+
+  &.p-button-success {
+    @include btn-hover($success);
+  }
+
+  &.p-button-danger {
+    @include btn-hover($danger);
+  }
+
+  &.p-button-warning {
+    @include btn-hover($warning);
+  }
+
+  &.p-button-info {
+    @include btn-hover($prime-cl);
+  }
+
+  &.p-button-secondary {
+    @include btn-hover($secondary-cl);
+  }
+
+  &.p-button-help {
+    @include btn-hover($help);
+  }
+
+  &.p-button-icon-only {
+    color: $prime-cl;
+    @include btn-hover(transparent);
+    padding: 0px 4px;
+
+    .p-button-icon {
+      margin: 0;
+      font-size: 14px;
+    }
+  }
+
+  &.p-button-rounded {
+    border-radius: 10px;
+  }
+
+  &.p-button-link {
+    background-color: transparent;
+    color: $default;
+
+    &.p-button-success {
+      color: $success;
+    }
+
+    &.p-button-danger {
+      color: $danger;
+    }
+
+    &.p-button-warning {
+      color: $warning !important;
+    }
+
+    &.p-button-info {
+      color: $prime-cl;
+    }
+
+    &.p-button-secondary {
+      color: $secondary-cl;
+    }
+  }
+
+  .p-button-text {
+    background-color: transparent;
+    box-shadow: none;
+    color: $default;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &.p-button-info {
+      color: $prime-cl;
+    }
+
+    &.p-button-secondary {
+      color: $secondary-cl;
+    }
+
+    &.p-button-success {
+      color: $success;
+    }
+
+    &.p-button-danger {
+      color: $danger;
+    }
+
+    &.p-button-warning {
+      color: $warning !important;
+    }
+
+    &.p-button-help {
+      color: $help;
+    }
+  }
+
+  &.p-button-outlined {
+    background-color: transparent;
+    box-shadow: none;
+    color: $default;
+    border: 1px $default solid;
+    padding: 2px 6px;
+
+    &:hover {
+
+      background: lighten($color: $default, $amount: 40);
+    }
+
+    &.p-button-info {
+      color: $prime-cl;
+      border: 1px $prime-cl solid;
+
+      &:hover {
+        background: lighten($color: $prime-cl, $amount: 60);
+      }
+    }
+
+    &.p-button-secondary {
+      color: $secondary-cl;
+      border: 1px $secondary-cl solid;
+
+      &:hover {
+        background: lighten($color: $secondary-cl, $amount: 40);
+      }
+    }
+
+    &.p-button-success {
+      color: $success;
+      border: 1px $success solid;
+
+      &:hover {
+        background: lighten($color: $success, $amount: 40);
+      }
+    }
+
+    &.p-button-danger {
+      color: $danger;
+      border: 1px $danger solid;
+
+      &:hover {
+        background: lighten($color: $danger, $amount: 40);
+      }
+    }
+
+    &.p-button-warning {
+      color: $warning;
+      border: 1px $warning solid;
+
+      &:hover {
+        background: lighten($color: $warning, $amount: 30);
+      }
+    }
+
+    &.p-button-help {
+      color: $help;
+      border: 1px $help solid;
+
+      &:hover {
+        background: lighten($color: $help, $amount: 40);
+      }
+    }
+  }
+
+  &.p-button-raised {
+    box-shadow: 2px 2px 6px 0px $default;
+  }
+
+  &.p-button-icon-only-primary {
+    padding: 8px;
+    color: #1b1464;
+    border-radius: 40%;
+    background-color: $icon-bg;
+    width: 34px;
+
+    .p-button-icon {
+      color: $prime-cl;
+    }
+  }
+
+  &.p-button-xs {
+    font-size: 0.8em;
+  }
+
+  &.p-button-sm {
+    font-size: 0.9em;
+  }
+
+  &.p-button-md {
+    font-size: 1em;
+  }
+
+  &.p-button-lg {
+    font-size: 1.3em;
+  }
+
+}
+
+.p-button-icon-right {
+  margin-left: 5px;
+}
+
+.p-button-label {
+  font-family: "Open Sans", sans-serif;
+}
+
+.cancel-btn {
+  // background-color: #A7A7A7;
+  background-color: #183160;
+}
+
+.cancel-btn-light {
+  background-color: rgb(151, 183, 210);
+  color: #183160;
+  border: none;
+}
+
+.cancel-btn-light:hover {
+  border: none !important;
+}
+
+.add-btn {
+  background-color: #34bc83;
+}
+
+.save-btn {
+  background-color: #185ADB;
+}
+
+.delete-btn {
+  background-color: #bc351f;
+}
+
+.action-btn {
+  // padding: 5px;
+  width: 23px;
+  height: 23px;
+  border: none;
+  margin: 2px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  i {
+    font-size: 11px;
+    color: rgb(255, 255, 255);
+  }
+
+  &.edit {
+    background-color: #f7aa00
+  }
+
+  &.delete {
+    background-color: #e52000;
+  }
+}
+
+.add-data-btn {
+  padding: 5px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #185ADB;
+  color: #ffffff;
+  cursor: pointer;
+
+  i {
+    margin-right: 5px;
+    color: rgb(255, 255, 255);
+  }
+}

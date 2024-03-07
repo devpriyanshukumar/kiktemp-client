@@ -1,0 +1,183 @@
+.project-overview-page {
+
+  .page-header {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .project-overview {
+    background-color: #EBF1F8;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 10px 50px;
+
+    .update-project {
+      justify-content: end;
+
+      button {
+        background-color: transparent;
+        color: #1147b4;
+        padding: 0;
+
+        .fas {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .field {
+
+      label {
+        color: #8495A8;
+      }
+
+      .data-field {
+        background-color: white;
+        padding: 5px;
+        width: 70%;
+        border-radius: 4px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        border: none;
+
+      }
+    }
+  }
+
+  .add-cubicle-btn {
+    margin: 30px 50px;
+
+    button {
+      background-color: #1147b4;
+    }
+  }
+
+  .cubicle-list {
+    margin: 10px 50px;
+
+    p-table tr td {
+      text-align: center;
+      align-items: center;
+    }
+
+    .no-projects {
+      text-align: center;
+
+      h3 {
+        font-size: 14px;
+        margin-top: 10px;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .no-data-img {
+        margin-top: 20px;
+        width: 300px;
+      }
+    }
+
+    .button-container {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        border: none;
+        color: white;
+        padding: 7px;
+      }
+
+      .view-btn {
+        background-color: #185ADB;
+      }
+
+      .update-btn {
+        background-color: #F7AA00;
+      }
+
+      .delete-btn {
+        background-color: #E52000;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .project-overview {
+      margin: 10px;
+
+      .field {
+        .data-field {
+          width: 100%;
+        }
+      }
+    }
+
+    .add-cubicle-btn {
+      margin: 20px 10px;
+    }
+
+    .cubicle-list {
+      margin: 10px;
+    }
+  }
+
+  input:focus {
+    outline: none;
+  }
+}
+
+.edit-project-main-data {
+  .p-dialog-header-close-icon {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: 15px;
+  }
+
+  .edit-project-main-data-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 45rem;
+    height: 45rem;
+
+    .p-inputtext {
+      height: 35px;
+    }
+
+    .p-dropdown {
+      height: 35px;
+      width: 100%;
+
+      &.ng-dirty.ng-invalid>.p-dropdown {
+        border: none;
+      }
+    }
+
+    .save-btn {
+      background-color: #185ADB;
+    }
+
+    .cancel-btn {
+      background-color: #A7A7A7;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .no-projects {
+      h3 {
+        font-size: 13px;
+        margin-top: 25%;
+      }
+
+      .no-data-img {
+        margin-top: 50px;
+        width: 200px;
+      }
+    }
+  }
+}

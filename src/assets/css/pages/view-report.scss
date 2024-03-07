@@ -1,0 +1,267 @@
+.view-report {
+  padding-bottom: 20px;
+
+  .download-report-btn-row {
+    padding: 20px;
+
+    .download-report-btn {
+      background-color: #185ADB;
+    }
+  }
+
+  .report-content {
+    margin: 20px;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5px;
+
+    #report-body {
+      padding: 0 10%;
+      margin: 0 10%;
+
+      .logo-div {
+        margin: 10px 0;
+        display: flex;
+        justify-content: flex-end;
+
+        .company-logo {
+          width: 200px;
+        }
+      }
+
+      .report-title {
+        border: 1px solid black;
+        padding: 5px;
+        margin: 10px 0;
+
+        p {
+          font-size: 12px;
+          font-weight: 600;
+        }
+      }
+    }
+
+    #chart {
+      padding: 0 10%;
+      margin: 0 10%;
+    }
+  }
+
+  table,
+  th,
+  td {
+    border: 1px solid black;
+    font-size: 13px;
+    padding: 5px;
+  }
+
+  .table1 {
+    width: 100%;
+
+    col.col0 {
+      width: 20%;
+    }
+
+    .col1,
+    .col2 {
+      width: 10%;
+    }
+
+    .col4,
+    .col3 {
+      width: 5%;
+    }
+
+    .col5 {
+      width: 25%;
+    }
+
+    col.col6 {
+      width: 25%;
+    }
+  }
+
+  .table2 {
+    width: 100%;
+
+    col.col0 {
+      width: 5%;
+    }
+
+    col.col1 {
+      width: 15%;
+    }
+
+    .col2,
+    .col3,
+    .col4,
+    .col5 {
+      width: 20%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .align-middle {
+      vertical-align: middle;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .text-bold {
+      font-weight: bold;
+    }
+
+    .panel {
+      width: 100%;
+    }
+  }
+
+  .table3 {
+    width: 100%;
+
+    .col0,
+    .col1 {
+      width: 50%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .align-middle {
+      vertical-align: middle;
+    }
+
+    .text-bold {
+      font-weight: bold;
+    }
+
+    .eqn1 {
+      width: 80px;
+    }
+
+    .eqn2 {
+      width: 70px;
+    }
+
+    .eqn-result {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+  }
+
+  .table4 {
+    width: 100%;
+
+    .col0,
+    .col1 {
+      width: 50%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .align-middle {
+      vertical-align: middle;
+    }
+
+    .text-bold {
+      font-weight: 600;
+    }
+
+    .eqn3 {
+      width: 15px;
+    }
+
+    .eqn4 {
+      width: 140px;
+    }
+
+    .eqn5 {
+      width: 140px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .view-report {
+    padding: 10px;
+
+    .download-report-btn-row {
+      display: none;
+    }
+
+    .report-content {
+      #report-body {
+        padding: 0 5%;
+
+        .logo-div {
+          justify-content: center;
+
+          .company-logo {
+            width: 150px;
+          }
+        }
+
+        .table1 {
+          width: 100%;
+
+          th,
+          td {
+            display: block;
+            width: 100%;
+          }
+
+          .col0,
+          .col1,
+          .col2,
+          .col3,
+          .col4,
+          .col5,
+          .col6 {
+            width: 100% !important;
+          }
+        }
+
+        .table2 {
+          width: 100%;
+
+          th,
+          td {
+            display: block;
+            width: 100%;
+          }
+
+          .col0,
+          .col1,
+          .col2,
+          .col3,
+          .col4,
+          .col5 {
+            width: 100% !important;
+          }
+        }
+
+        .table4 {
+          .eqn3 {
+            width: 10px;
+          }
+
+          .eqn4 {
+            width: 100px;
+          }
+
+          .eqn5 {
+            width: 100px;
+          }
+        }
+      }
+    }
+  }
+
+
+}

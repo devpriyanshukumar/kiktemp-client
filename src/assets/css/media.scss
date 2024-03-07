@@ -1,0 +1,45 @@
+@media (max-width: 1024px) {
+    .side-menu-container {
+
+        .hidden-overflow {
+            max-width: 120px;
+        }
+
+        .side-menu {
+            margin-top: 10px;
+
+            .p-menu {
+                .p-submenu-header {
+                    margin-top: 10px;
+                }
+
+                .p-menuitem-link {
+                    .p-menuitem-text {
+                        font-size: 11px;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+@media (max-width: 768px) {
+    .content-body {
+        margin-top: 135px
+    }
+
+    .p-dialog {
+        .p-dialog-header {
+            height: 50px;
+
+            .p-dialog-title {
+                font-size: 13px;
+            }
+        }
+    }
+
+    .p-toast {
+        width: 280px !important;
+    }
+}

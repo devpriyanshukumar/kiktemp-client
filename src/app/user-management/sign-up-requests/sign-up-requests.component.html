@@ -1,0 +1,50 @@
+<div class="content-body sign-up-request-list-page">
+  <div class="page-header">Sign Up requests</div>
+  <div class="card">
+    <div class="no-requests" *ngIf="signupRequestList.length === 0">
+      <h3>No Signup requests found!</h3>
+      <img src="../../../assets/img/no_data.webp" class="no-data-img">
+    </div>
+
+    <div *ngIf="signupRequestList.length !== 0">
+      <p-table [value]="signupRequestList" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="REQUESTED_DATE">Requested Date <p-sortIcon [field]="'REQUESTED_DATE'"></p-sortIcon>
+            </th>
+            <th>Organization Name</th>
+            <th>Contact Person Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Country</th>
+            <th>Website</th>
+            <th>Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-request>
+          <tr>
+            <td>{{request.REQUESTED_DATE}}</td>
+            <td [title]="request.ORGANIZATION_NAME">{{request.ORGANIZATION_NAME | truncate: 25}}</td>
+            <td [title]="request.NAME">{{request.NAME | truncate: 20}}</td>
+            <td [title]="request.EMAIL">{{request.EMAIL | truncate: 25}}</td>
+            <td>{{request.PHONE_NUMBER}}</td>
+            <td>{{request.COUNTRY}}</td>
+            <td [title]="request.WEBSITE">{{request.WEBSITE | truncate: 20}}</td>
+            <td><button class="signup-btn" (click)="signup(request.USER_ID)">Sign Up</button></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+  <div *ngIf="signupRequestList.length !== 0">
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [pageLinkSize]="3" [rows]="tableRowsPerPage"
+      [totalRecords]="totalRecords"></p-paginator>
+  </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+  <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+  <div class="loading-text">Loading...</div>
+</div>

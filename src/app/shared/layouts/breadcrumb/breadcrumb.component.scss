@@ -1,0 +1,40 @@
+.breadcrumb-container {
+    display: flex;
+    align-items: center;
+
+    .breadcrumb-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1349ac;
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+
+        .fa-solid {
+            font-size: 13px;
+        }
+    }
+
+    .breadcrumb-path {
+        margin-left: 18px;
+
+        .component-name {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 3px;
+            color: #1349ac;
+        }
+
+        .component-path {
+            color: #8495A8;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .breadcrumb-path {
+            margin-left: 5px;
+        }
+    }
+}

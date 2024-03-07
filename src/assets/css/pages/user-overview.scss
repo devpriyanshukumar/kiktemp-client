@@ -1,0 +1,153 @@
+.user-overview-page {
+    .page-header {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    .user-details {
+        background-color: #EBF1F8;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 50px;
+
+        .field {
+            label {
+                color: #8495A8;
+            }
+
+            .data-field {
+                background-color: white;
+                padding: 5px;
+                width: 70%;
+                border-radius: 4px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                border: none;
+
+            }
+
+            .distributor {
+                background-color: #E3E7EC;
+            }
+        }
+    }
+
+    .search-container {
+        .p-inputgroup {
+            padding: 20px 0;
+            margin: 20px 50px;
+
+            .p-inputgroup-addon {
+                background-color: #D7E1F3;
+                border: none;
+                height: 35px;
+
+                .fas {
+                    font-size: 15px;
+                }
+            }
+
+            .p-inputtext {
+                background-color: #D7E1F3;
+                border: none;
+                height: 35px;
+            }
+
+            ::placeholder {
+                font-size: 13px;
+            }
+        }
+    }
+
+    .card {
+        padding: 10px 50px;
+
+        .no-projects {
+            text-align: center;
+
+            h3 {
+                font-size: 14px;
+                margin-top: 10px;
+                text-align: center;
+                font-weight: 500;
+            }
+
+            .no-data-img {
+                margin-top: 20px;
+                width: 300px;
+            }
+        }
+
+        .view-project-btn {
+            padding: 6px 10px;
+            border: none;
+            background-color: #185ADB;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+
+            .navigate {
+                margin-left: 10px;
+                font-size: 16px;
+            }
+        }
+
+        .view-project-btn:hover {
+            opacity: 0.9;
+        }
+
+    }
+
+    @media (max-width: 576px) {
+        .user-details {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px;
+
+            .field {
+
+                label {
+                    color: #8495A8;
+                }
+
+                .data-field {
+                    background-color: white;
+                    padding: 5px;
+                    width: 100%;
+                    border-radius: 4px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    border: none;
+
+                }
+            }
+        }
+
+        .search-container {
+            .p-inputgroup {
+                padding: 10px;
+                margin: 0;
+            }
+        }
+
+        .card {
+            padding: 20px 10px;
+
+            .no-projects {
+
+                h3 {
+                    font-size: 13px;
+                    margin-top: 25%;
+                }
+
+                .no-data-img {
+                    margin-top: 50px;
+                    width: 200px;
+                }
+            }
+        }
+    }
+}

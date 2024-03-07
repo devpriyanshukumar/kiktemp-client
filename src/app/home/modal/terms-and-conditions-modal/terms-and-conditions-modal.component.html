@@ -1,0 +1,21 @@
+<div class="terms-and-conditions-modal">
+  <ul class="custom-list">
+    <li>The KIKBLOX Temperature Software is exclusively designed for temperature rise verification of KIKBLOX brand
+      enclosures and switchboard systems.The functionality of this Software is supported by verification testing
+      conducted specifically on KIKBLOX products.Utilizing the Software for verification on enclosures and enclosure
+      systems of brands other than KIKBLOX is not deemed as verifiable.Therefore, the Software cannot be used to
+      demonstrate compliance to any standards when applied to non-KIKBLOX branded enclosures and enclosure systems.By
+      using the KIKBLOX Temperature Software, you agree to these terms and conditions.
+    </li>
+    <li>For switchboard specific Design Verification compliance please discuss your requirements with KIK.Compliance
+      will be subject to reconfirmation, in the effect of inability to provide specification at the time of estimation
+      and in
+      which case, we bear no responsibility to provide compliance.
+    </li>
+  </ul>
+
+  <div class="checkbox">
+    <p-checkbox label="I have read and accept the Terms of Service" (onChange)="selectCheckbox($event)"
+      [binary]="true" inputId="binary" [(ngModel)]="termsAccepted"></p-checkbox>
+  </div>
+</div>

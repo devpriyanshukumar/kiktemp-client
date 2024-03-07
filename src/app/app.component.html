@@ -1,0 +1,21 @@
+<div class="side-menu" *ngIf="!hideLayout">
+  <app-side-menu></app-side-menu>
+</div>
+
+<div class="content-area" *ngIf="!hideLayout">
+  <app-header class="header"></app-header>
+  <router-outlet class="router-outlet"></router-outlet>
+</div>
+
+<div *ngIf="hideLayout">
+  <router-outlet class="router-outlet"></router-outlet>
+</div>
+
+<p-toast position="top-right">
+  <ng-template let-message pTemplate="message">
+    <div>
+      <h3>{{message?.summary}}</h3>
+      <p [innerHtml]="message?.detail"></p>
+    </div>
+  </ng-template>
+</p-toast>

@@ -1,0 +1,150 @@
+.customer-management {
+
+  .page-header {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 20px;
+
+    .search-container {
+      .p-inputgroup {
+        padding: 0 0 20px 0;
+
+        .p-inputgroup-addon {
+          background-color: #D7E1F3;
+          border: none;
+          height: 35px;
+
+          .fas {
+            font-size: 15px;
+          }
+        }
+
+        .p-inputtext {
+          background-color: #D7E1F3;
+          border: none;
+          height: 35px;
+        }
+
+        ::placeholder {
+          font-size: 13px;
+        }
+      }
+    }
+
+    .action-btn-row {
+      display: flex;
+      justify-content: space-between;
+
+      .action-btn {
+        padding: 4px;
+        border: none;
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+
+        .fa-solid {
+          font-size: 15px;
+        }
+
+        .navigate {
+          color: #185ADB;
+
+          &:hover {
+            color: #0053f8;
+          }
+        }
+
+        .suspend {
+          color: black;
+
+          &:hover {
+            color: rgb(107, 107, 107);
+          }
+        }
+
+        .unsuspend {
+          color: green;
+
+          &:hover {
+            color: rgb(10, 180, 10);
+          }
+        }
+
+        .remove {
+          color: #CB476B;
+
+          &:hover {
+            color: red;
+          }
+        }
+      }
+    }
+
+    .no-customers {
+      text-align: center;
+
+      h3 {
+        font-size: 14px;
+        margin-top: 5%;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .no-data-img {
+        margin-top: 20px;
+        width: 300px;
+      }
+    }
+  }
+
+  .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    .no-customers {
+
+      h3 {
+        font-size: 13px;
+        margin-top: 25%;
+      }
+
+      .no-data-img {
+        margin-top: 50px;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .card {
+    .no-customers {
+
+      h3 {
+        font-size: 13px;
+        margin-top: 15%;
+      }
+
+      .no-data-img {
+        margin-top: 30px;
+        width: 250px;
+      }
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .card {
+    .p-datatable .p-datatable-tbody>tr>td:nth-child(8) {
+      padding: 0;
+    }
+  }
+}

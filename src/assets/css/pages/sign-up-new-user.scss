@@ -1,0 +1,135 @@
+.new-user-signup-content {
+
+    .page-header {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    .input-container {
+        margin-left: 4rem;
+        margin-top: 2rem;
+
+        .p-inputtext {
+            border: 1px solid #c5d6e7;
+            background-color: #ebf1f8;
+            padding: 10px;
+            border-radius: 5px;
+            height: auto;
+        }
+
+        label {
+            font-size: 11px;
+            color: #9dabba;
+        }
+
+        .required {
+            color: red;
+        }
+
+        .custom-drop-down {
+            padding: 9px 11px;
+            height: 39px;
+
+            .p-inputtext {
+                border: none;
+                background-color: #ebf1f8;
+                padding: 0px;
+                border-radius: 5px;
+            }
+        }
+
+        .custom-drop-down:not(.p-disabled):hover {
+            border: 1px solid #c5d6e7;
+        }
+    }
+
+    .error-container {
+        display: flex;
+        width: 80%;
+        justify-content: left;
+        margin-left: 4rem;
+
+        .error-message {
+            color: red;
+        }
+    }
+
+    .image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 4rem;
+
+        img {
+            width: 60%;
+        }
+    }
+
+    .save-btn {
+        width: 6rem;
+        background-color: #185adb;
+    }
+
+    .cancel-btn {
+        width: 6rem;
+        background-color: #A7A7A7;
+    }
+
+    .p-dropdown {
+        padding: 8px;
+        border: 1px solid #C5D6E7;
+    }
+
+    .p-dropdown-filter-container {
+        .p-dropdown-filter {
+            padding: 5px !important;
+            padding-bottom: 0px !important;
+            height: 3rem;
+        }
+
+        .p-dropdown-filter-icon {
+            right: 0;
+            margin-right: 10px;
+            font-size: 15px;
+        }
+    }
+
+    .p-dropdown-panel .p-dropdown-items {
+        max-height: 15rem;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .new-user-signup-content {
+
+        .input-container {
+            margin-left: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .error-container {
+            display: flex;
+            width: 80%;
+            justify-content: left;
+            margin-left: 2rem;
+        }
+    }
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #495057;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #495057;
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #495057;
+}

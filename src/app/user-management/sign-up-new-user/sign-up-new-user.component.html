@@ -1,0 +1,133 @@
+<div class="content-body new-user-signup-content">
+    <h4 class="page-header">Sign Up new user</h4>
+    <div class="grid">
+        <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4" *ngIf="!isGettingData">
+            <form [formGroup]="signUpForm">
+                <!-- User Type -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">User Type <span class="required">*</span></label>
+                    <p-dropdown [options]="userTypes" optionLabel="name" placeholder="Select a user type"
+                        formControlName="userType" styleClass="custom-drop-down"></p-dropdown>
+                </div>
+                <div *ngIf="signUpForm.get('userType')?.invalid"
+                    class="error-container mt-2">
+                    <div *ngIf="signUpForm.get('userType')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Company Name -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Company Name <span class="required">*</span></label>
+                    <input pInputText id="username" aria-describedby="username-help" placeholder="Enter Company name"
+                        class="custom-placeholder-color" formControlName="organizationName" autocomplete="off"/>
+                </div>
+                <div *ngIf="signUpForm.get('organizationName')?.invalid && (signUpForm.get('organizationName')?.dirty || signUpForm.get('organizationName')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="signUpForm.get('organizationName')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Company Email Address -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Company Email Address <span class="required">*</span></label>
+                    <input pInputText id="username" aria-describedby="username-help" placeholder="Enter Email Address"
+                        formControlName="email" autocomplete="off"/>
+                </div>
+                <div *ngIf="signUpForm.get('email')?.invalid && (signUpForm.get('email')?.dirty || signUpForm.get('email')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="signUpForm.get('email')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                    <div *ngIf="signUpForm.get('email')?.hasError('email')" class="error-message">
+                        {{enterValidInput}}
+                    </div>
+                </div>
+
+                <!-- Country -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Country <span class="required">*</span></label>
+                    <p-dropdown [options]="countryList" optionLabel="country" placeholder="Select country" (onChange)="onCountrySelect($event)"
+                        formControlName="country" styleClass="custom-drop-down" [filter]="true" filterBy="country" ></p-dropdown>
+                </div>
+                <div *ngIf="signUpForm.get('country')?.invalid && (signUpForm.get('country')?.dirty || signUpForm.get('country')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="signUpForm.get('country')?.hasError('required')" class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Contact Number -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Contact Number <span class="required">*</span></label>
+                    <div class="grid">
+                        <div class="col-2">
+                            <input pInputText id="username" formControlName="frontMask" aria-describedby="username-help" readonly />
+                        </div>
+                        <div class="col-10 pl-2">
+                            <input pInputText id="username" aria-describedby="username-help" placeholder="Enter Contact Number"
+                                formControlName="contactNumber" autocomplete="off"/>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf=" (signUpForm.get('contactNumber')?.dirty || signUpForm.get('contactNumber')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="!signUpForm.controls['contactNumber'].value" class="error-message">
+                        {{requiredField}}
+                    </div>
+                    <div *ngIf="contactNumberControl?.value.length < contactNumberMinLength" class="error-message">
+                        &nbsp;{{enterValidInput}}
+                    </div>
+                </div>
+
+                <!-- Contact Person Name -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Contact Person Name <span class="required">*</span></label>
+                    <input pInputText id="username" aria-describedby="username-help"
+                        placeholder="Enter Contact Person Name" formControlName="name" autocomplete="off"/>
+                </div>
+                <div *ngIf="signUpForm.get('name')?.invalid && (signUpForm.get('name')?.dirty || signUpForm.get('name')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="signUpForm.get('name')?.hasError('required')"
+                        class="error-message">
+                        {{requiredField}}
+                    </div>
+                </div>
+
+                <!-- Company Website -->
+                <div class="flex flex-column gap-2 input-container">
+                    <label htmlFor="username">Company Website </label>
+                    <input pInputText id="username" aria-describedby="username-help"
+                        placeholder="Enter Company Website URL" formControlName="webSite" autocomplete="off"/>
+                </div>
+                <div *ngIf="signUpForm.get('webSite')?.invalid && (signUpForm.get('webSite')?.dirty || signUpForm.get('webSite')?.touched)"
+                    class="error-container mt-2">
+                    <div *ngIf="signUpForm.get('webSite')?.hasError('pattern')" class="error-message">
+                        {{enterValidInput}}
+                    </div>
+                </div>
+            </form>
+            <div class="grid">
+                <div class="col-12 flex flex-row justify-content-end mt-5 mb-3">
+                    <p-button label="Reset" styleClass="cancel-btn" (click)="resetForm()"></p-button>
+                    <p-button label="Save" styleClass="save-btn" (click)="saveForm()" [disabled]="!signUpForm.controls['userType'].value || !signUpForm.controls['organizationName'].value || 
+                    !signUpForm.controls['country'].value || !signUpForm.controls['email'].value ||  
+                    !signUpForm.controls['name'].value || (signUpForm.get('email')?.hasError('email') ? true : false) || 
+                    (signUpForm.get('contactNumber')?.hasError('minLength') ? true : false) ||
+                    (signUpForm.get('webSite')?.hasError('pattern') ? true : false)  || (contactNumberControl?.value.length < contactNumberMinLength)"></p-button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 md:col-6 lg:col-5 pl-5 pr-4 " *ngIf="isGettingData">
+            <div class="kiktemp-loader">
+                <img src="assets/img/kikblox_logo_rounded.webp" alt="Logo" class="spinner" />
+                <div class="loading-text">Loading...</div>
+              </div>
+        </div>
+        <div class="col-0 md:col-6 lg:col-7 image-container" *ngIf="screenWidth > 768">
+            <img src="assets/img/sign_up_new_user.webp" alt="">
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>

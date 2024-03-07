@@ -1,0 +1,119 @@
+.p-paginator {
+    background: transparent;
+    padding: 1rem;
+
+    .p-paginator-first {
+        background-color: transparent;
+        color: $light-gray;
+        border: none;
+        width: 3rem;
+        height: 3rem;
+        transition: box-shadow 0.2s;
+        border-radius: 4px;
+
+        &:not(.p-disabled) {
+            &:not(.p-highlight) {
+                &:hover {
+                    background: $inverse;
+                    border-color: transparent;
+                    color: $prime-txt-cl;
+                }
+            }
+        }
+    }
+
+    .p-paginator-prev {
+        background-color: transparent;
+        color: $light-gray;
+        border: none;
+        width: 3rem;
+        height: 3rem;
+        transition: box-shadow 0.2s;
+        border-radius: 4px;
+
+        &:not(.p-disabled) {
+            &:not(.p-highlight) {
+                &:hover {
+                    background: $inverse;
+                    border-color: transparent;
+                    color: $prime-txt-cl;
+                }
+            }
+        }
+    }
+
+    .p-paginator-next {
+        background-color: transparent;
+        color: $light-gray;
+        border: none;
+        width: 3rem;
+        height: 3rem;
+        transition: box-shadow 0.2s;
+        border-radius: 4px;
+
+        &:not(.p-disabled) {
+            &:not(.p-highlight) {
+                &:hover {
+                    background: $inverse;
+                    border-color: transparent;
+                    color: $prime-txt-cl;
+                }
+            }
+        }
+    }
+
+    .p-paginator-last {
+        background-color: transparent;
+        color: $light-gray;
+        border: none;
+        width: 3rem;
+        height: 3rem;
+        transition: box-shadow 0.2s;
+        border-radius: 4px;
+
+        &:not(.p-disabled) {
+            &:not(.p-highlight) {
+                &:hover {
+                    background: $inverse;
+                    border-color: transparent;
+                    color: $prime-txt-cl;
+                }
+            }
+        }
+    }
+
+    .p-paginator-current {
+        background-color: transparent;
+        color: $light-gray;
+        border: none;
+        width: 3rem;
+        height: 3rem;
+        transition: box-shadow 0.2s;
+        border-radius: 4px;
+    }
+
+    .p-paginator-pages {
+        .p-paginator-page {
+            background-color: transparent;
+            color: $light-gray;
+            border: none;
+            width: 3rem;
+            height: 3rem;
+            transition: box-shadow 0.2s;
+            border-radius: 4px;
+
+            &.p-highlight {
+                background: #185ADB;
+                color: $white;
+            }
+
+            &:not(.p-highlight) {
+                &:hover {
+                    background: $inverse;
+                    border-color: transparent;
+                    color: $prime-txt-cl;
+                }
+            }
+        }
+    }
+}

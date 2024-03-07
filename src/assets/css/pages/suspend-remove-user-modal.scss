@@ -1,0 +1,123 @@
+.suspend-remove-user-modal {
+  margin: 20px;
+
+  p {
+    text-align: center;
+    font-size: 14px;
+    color: black;
+  }
+
+  .grid {
+    justify-content: center;
+    padding: 30px;
+
+    .p-inputtext {
+      font-weight: 400;
+      font-size: 14px;
+    }
+
+    .p-input-icon-left {
+      width: 100%;
+    }
+
+    .required {
+      color: red;
+      font-size: 12px;
+      margin-top: 5px;
+      text-align: left;
+    }
+
+    .input-field {
+      padding-left: 30px;
+
+      &::placeholder {
+        color: black;
+        font-size: 14px;
+      }
+    }
+
+    .icon {
+      color: black;
+      font-size: 14px;
+    }
+
+    .password-input input {
+      flex-grow: 1;
+      padding-right: 40px;
+    }
+
+    .password-input button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 3%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .btn-row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+
+    .close-btn {
+      background-color: #A7A7A7;
+    }
+
+    .suspend-btn {
+      background-color: black;
+    }
+
+    .unsuspend-btn {
+      background-color: green;
+    }
+
+    .remove-btn {
+      background-color: #CB476B;
+    }
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 12px;
+    }
+
+    .grid {
+      padding: 20px 5px;
+  
+      .p-inputtext {
+        font-size: 12px;
+      }
+
+      .input-field {
+        padding-left: 30px;
+  
+        &::placeholder {
+          font-size: 12px;
+        }
+      }
+  
+      .icon {
+        font-size: 12px;
+      }
+  
+      .password-input input {
+        flex-grow: 1;
+        padding-right: 40px;
+      }
+  
+      .password-input button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        right: 3%;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  
+  }
+}

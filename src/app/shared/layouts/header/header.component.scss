@@ -1,0 +1,207 @@
+.header-container {
+    height: 68px;
+    background-color: white;
+
+    .hamburger-button {
+        display: none;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding-left: 10px;
+
+        .fa-bars {
+            font-size: 20px;
+        }
+    }
+
+    .company-details {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #031e50;
+        height: 68px;
+        width: 15%;
+
+        .company-logo {
+            width: 180px;
+        }
+
+        .company-name {
+            font-size: 23px;
+            line-height: 20px;
+            font-weight: 700;
+            margin-left: 5px;
+            color: white;
+        }
+    }
+
+    .breadcrumb-app-desktop {
+        padding: 18px;
+        width: 60%;
+    }
+
+    .profile-section {
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 10px;
+
+        .user-name {
+            // max-width: 50%;
+            font-weight: 600;
+            font-size: 13px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            color: #19499D;
+            text-align: end;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            .fas {
+                font-size: 16px;
+                margin-right: 10px;
+                color: #19499D;
+            }
+        }
+
+        .dropdown-content {
+            margin-top: 20px;
+            display: block;
+            position: absolute;
+            background-color: #EDEFF3;
+            right: 20px;
+            z-index: 1;
+            width: 200px;
+            height: 80px;
+            border-radius: 4px;
+            color: #19499D;
+            border: 1px solid #DAE0EB;
+
+            a {
+                display: block;
+                padding: 8px 16px;
+                text-decoration: none;
+                color: #19499D;
+                height: 40px;
+                font-weight: 600;
+                font-size: 12px;
+                cursor: pointer;
+                border-bottom: 1px solid #DAE0EB;
+                border-radius: 4px;
+
+                &:hover {
+                    color: #185ADB;
+                }
+
+                .fas {
+                    font-size: 15px;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        background-color: #031e50;
+
+        .hamburger-button {
+            display: block;
+            width: 10%;
+        }
+
+        .company-details {
+            width: 50%;
+            justify-content: flex-start;
+            padding-left: 10px;
+
+            .company-logo {
+                width: 110px;
+            }
+
+            .company-name {
+                font-size: 20px;
+            }
+        }
+
+        .breadcrumb-app-desktop {
+            display: none;
+        }
+
+        .profile-section {
+            width: 40%;
+            color: white;
+            justify-content: flex-start;
+
+            .prof-img {
+                display: none;
+            }
+
+            .user-name {
+                max-width: 100%;
+                color: white;
+            }
+
+            .dropdown-button {
+                .fas {
+                    color: white;
+                }
+            }
+
+            .dropdown-content {
+                margin-top: 20px;
+                margin-right: 20px;
+                width: 150px;
+            }
+        }
+    }
+
+    @media (min-width: 768px) and (max-width: 1200px) {
+        .company-details {
+            .company-logo {
+                width: 100px;
+            }
+
+            .company-name {
+                font-size: 18px;
+            }
+        }
+    }
+
+    @media (max-width: 576px) {
+        .profile-section {
+            .user-name {
+                max-width: 50%;
+                color: white;
+                background-color: blue;
+            }
+
+            .dropdown-content {
+                margin-top: 20px;
+                margin-right: 80px;
+                width: 150px;
+            }
+        }
+    }
+}
+
+.breadcrumb-app-mobile {
+    display: none;
+
+    @media (max-width: 768px) {
+        display: block;
+        padding: 18px 0 0 18px;
+        background-color: #EDEFF3;
+    }
+}

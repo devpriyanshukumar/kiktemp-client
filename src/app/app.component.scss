@@ -1,0 +1,57 @@
+.side-menu {
+    background: linear-gradient(to top, #185ADB, #031e50);
+    position: fixed;
+    top: 68px;
+    left: 0;
+    bottom: 0;
+    width: 15%;
+    color: white;
+}
+
+.content-area {
+    position: relative;
+    left: 15%;
+    width: 85%;
+    height: 100%;
+    background-color: #EDEFF3;
+    top: 68px;
+    overflow-y: auto;
+}
+
+app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+@media (max-width: 768px) {
+    .side-menu {
+        width: 100%;
+        left: 0;
+        bottom: 0;
+        top: 68px;
+        background: transparent;
+        z-index: 0;
+    }
+
+    .content-area {
+        position: relative;
+        left: 0;
+        width: 100%;
+        top: 0;
+    }
+
+    app-header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 2;
+    }
+
+    .router-outlet {
+        z-index: 1;
+    }
+}

@@ -1,0 +1,217 @@
+.user-profile {
+    .page-header {
+        font-size: 14px;
+        font-weight: 500;
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    p {
+        font-size: 13px;
+        margin-left: 3rem;
+        margin-top: 1.5rem;
+    }
+
+    .change-password-btn {
+        background-color: rgb(255, 255, 255);
+        border: 1px solid #185ABD;
+
+        .p-button-label {
+            color: #185ABD;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .p-button-icon {
+            color: #185ABD;
+        }
+    }
+}
+
+.profile-update-btn {
+    background-color: #185adb;
+}
+
+.change-password-modal {
+    .p-dialog-header {
+        background-color: rgb(255, 255, 255);
+        text-align: center;
+        padding: 1rem 0 0 0;
+        align-items: flex-start;
+
+        .p-dialog-header-close-icon {
+            color: black;
+            font-size: 15px;
+            font-weight: bolder;
+            margin-right: 1rem;
+        }
+
+        h2 {
+            color: #185ABD;
+            margin-top: 1rem;
+            font-size: 16px;
+            margin-top: 2rem;
+        }
+    }
+
+    .content {
+        background-color: rgb(255, 255, 255);
+        width: 30vw;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .password-input{
+            margin-top: 10px;
+        }
+
+        p {
+            width: 22rem;
+            font-size: 14px;
+            color: black;
+            margin-bottom: 2rem;
+        }
+
+        .p-inputtext {
+            padding: 0 0 0 1rem;
+            height: 2.5rem;
+            width: 22rem;
+        }
+
+        .p-password {
+            margin-top: 1rem;
+            border: none;
+        }
+
+        .p-button {
+            background-color: #185ABD;
+            width: 22rem;
+            margin-top: 20px;
+
+            .p-button-label {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .confirm-modal {
+        margin-top: 3.5rem;
+        margin-right: 2rem;
+        text-align: right;
+
+        .p-button {
+            background-color: #A7A7A7;
+        }
+    }
+
+    .confirm-content {
+        height: 15vh; 
+        width: 40vw;
+        p {
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+    }
+
+    .error-message {
+        color: red;
+    }
+}
+
+@media (max-width: 1025px) {
+    .change-password-modal {
+        .content {
+            width: 35vw;
+            height: 30vh;
+        }
+    }
+}
+
+@media (max-width: 800px) {
+    .change-password-modal {
+        .p-dialog-header {
+            h2 {
+                color: #185ABD;
+                font-size: 14px;
+            }
+        }
+        .content {
+            width: 50vw;
+            height: 40vh;
+
+            .password-input{
+                margin-top: 5px;
+            }
+
+            p {
+                width: 15rem;
+                margin-top: 10px;
+                font-size: 12px;
+                margin-bottom: 5px;
+            }
+
+            .p-inputtext {
+                height: 2rem;
+                width: 15rem;
+            }
+
+            .p-button {
+                width: 15rem;
+            }
+        }
+
+        .confirm-modal {
+            margin-top: 2rem;
+            text-align: center;
+        }       
+        
+        .confirm-content {
+            height: 20vh; 
+            width: 70vw;
+            p {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .change-password-modal {    
+        .p-dialog-header {
+            h2 {
+                color: #185ABD;
+                font-size: 13px;
+            }
+        }
+        .content {
+            width: 70vw;
+            height: 35vh;
+
+            .password-input{
+                margin-top: 2px;
+            }
+        }
+
+        .confirm-modal {
+            .p-button {
+                background-color: #A7A7A7;
+            }
+        }
+        .confirm-content {
+            height: 25vh; 
+            width: 70vw;
+            p {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                font-size: 10px;
+            }
+        }
+    }
+}

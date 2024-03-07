@@ -1,0 +1,91 @@
+<div class="content-body customer-management">
+  <h4 class="page-header">Customer Management</h4>
+  <div class="card">
+    <div class="search-container">
+      <div class="p-inputgroup col-12 sm:col-6">
+        <span class="p-inputgroup-addon">
+          <i class="fas fa-search"></i>
+        </span>
+        <input title="Search by Customer Organization / Customer Name / Distributor Organization / Email" pInputText
+          placeholder="Search by Customer Organization / Customer Name / Distributor Organization / Email"
+          (keyup)="searchCustomer($event)">
+      </div>
+    </div>
+
+    <div *ngIf="searchResultDataVM.length !== 0">
+      <p-table [value]="searchResultDataVM" styleClass="p-datatable-striped" [tableStyle]="{'min-width': '50rem'}">
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="JOINED_DATE" style="width: 10%;">Date <p-sortIcon [field]="'JOINED_DATE'"></p-sortIcon>
+            </th>
+            <th style="width: 15%;">Customer Organization</th>
+            <th style="width: 15%;">Customer Name</th>
+            <th style="width: 15%;">Distributor Organization</th>
+            <th style="width: 15%;">Distributor Name</th>
+            <th style="width: 10%;">Email</th>
+            <th style="width: 5%;">Country</th>
+            <th style="width: 5%;">Status</th>
+            <th style="width: 10%;">Action</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-customer>
+          <tr>
+            <td style="text-align: center;">{{customer?.JOINED_DATE}}</td>
+            <td style="text-align: center;" [title]="customer?.CHILD_ORGANIZATION" >{{customer?.CHILD_ORGANIZATION | truncate: 25}}</td>
+            <td style="text-align: center;" [title]="customer?.CHILD_NAME">{{customer?.CHILD_NAME | truncate: 20}}</td>
+            <td style="text-align: center;">{{customer?.PARENT_ORGANIZATION ? customer?.PARENT_ORGANIZATION : '-'}}</td>
+            <td style="text-align: center;">{{customer?.PARENT_NAME ? customer?.PARENT_NAME : '-'}}</td>
+            <td style="text-align: center;" [title]="customer?.CHILD_EMAIL">{{customer?.CHILD_EMAIL | truncate: 25}}</td>
+            <td style="text-align: center;">{{customer?.CHILD_COUNTRY}}</td>
+            <td style="text-align: center;">{{customer?.CHILD_STATUS | uppercase}}</td>
+            <td>
+              <div class="action-btn-row">
+                <!-- Navigate -->
+                <button [disabled]="customer?.CHILD_STATUS === removed"
+                  [ngClass]="customer?.CHILD_STATUS === removed ? disabled: ''" title="User Overview" class="action-btn"
+                  (click)="clickNavigate(customer?.CHILD_USER_ID, customer?.CHILD_USER_TYPE)"><i
+                    class="fa-solid fa-square-arrow-up-right navigate"></i></button>
+
+                <!-- Suspend -->
+                <button *ngIf="customer?.CHILD_STATUS !== suspended" [disabled]="customer?.CHILD_STATUS === removed"
+                  [ngClass]="customer?.CHILD_STATUS === removed ? disabled: ''" title="Suspend User" class="action-btn"
+                  (click)="clickSuspend(customer?.CHILD_USER_ID,customer?.CHILD_NAME)">
+                  <i class="fa-solid fa-user-clock suspend"></i>
+                </button>
+
+                <!-- Unsuspend -->
+                <button *ngIf="customer?.CHILD_STATUS === suspended" [disabled]="customer?.CHILD_STATUS === removed"
+                  [ngClass]="customer?.CHILD_STATUS === removed ? disabled: ''" title="Unsuspend User" class="action-btn"
+                  (click)="clickUnsuspend(customer?.CHILD_USER_ID,customer?.CHILD_NAME)">
+                  <i class="fa-solid fa-user-check unsuspend"></i>
+                </button>
+
+                <!-- Removed -->
+                <button [disabled]="customer?.CHILD_STATUS === removed"
+                  [ngClass]="customer?.CHILD_STATUS === removed ? disabled: ''" title="Remove User" class="action-btn"
+                  (click)="clickRemove(customer?.CHILD_USER_ID,customer?.CHILD_NAME)"><i
+                    class="fa-solid fa-user-xmark remove"></i></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <div class="no-customers" *ngIf="searchResultDataVM.length === 0">
+      <h3>No Customers found!</h3>
+      <img src="../../../assets/img/no_data.webp" class="no-data-img">
+    </div>
+  </div>
+
+  <div *ngIf="searchResultDataVM.length !== 0">
+    <p-paginator (onPageChange)="onPaginate($event)" [first]="first" [pageLinkSize]="3" [rows]="tableRowsPerPage"
+      [totalRecords]="totalResults"></p-paginator>
+  </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+  <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+  <div class="loading-text">Loading...</div>
+</div>

@@ -1,0 +1,125 @@
+@import 'abstracts/variable.scss';
+@import 'abstracts/mixins.scss';
+@import 'base/reset.css';
+
+* {
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    margin: 0;
+}
+
+.grid,
+[class^="col-"] {
+    margin: 0;
+    padding: 0;
+}
+
+.content-body {
+    background-color: white;
+    margin: 18px;
+    min-height: calc(100vh - 36px);
+}
+
+.required {
+    color: rgb(255, 0, 0)
+}
+
+.error-container {
+    display: flex;
+    width: 80%;
+    justify-content: left;
+    margin-left: 4rem;
+
+    .error-message {
+        color: red;
+    }
+}
+
+// //scroll bar
+   ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #CDCDCD;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #A9AEB2;
+    border-radius: 10px;
+  }
+
+
+
+/*------------import-common-component-scss-files------------*/
+@import 'components/button.scss';
+@import 'components/paginator.scss';
+@import 'components/radio-button.scss';
+@import 'components/card.scss';
+@import 'components/scrollpanel.scss';
+@import 'components/toast.scss';
+@import 'components/checkbox.scss';
+@import 'components/dropdown.scss';
+@import 'components/text-area.scss';
+@import 'components/file-upload.scss';
+@import 'components/avatar.scss';
+@import 'components/tooltip.scss';
+@import 'components/table.scss';
+@import 'components/dialog.scss';
+@import 'components/steps.scss';
+@import 'components/panel-menu.scss';
+@import 'components/calender.scss';
+@import 'components/multiselect.scss';
+@import 'components/menubar.scss';
+@import 'components/input.scss';
+@import 'components/inputtext.scss';
+@import 'components/overlay.scss';
+@import 'components/loader.scss';
+@import 'components/password.scss';
+@import 'components/accordian.scss';
+@import 'components/tab-view.scss';
+
+/*------------import-pages-scss-files------------*/
+@import 'pages/sign-up-new-user.scss';
+@import 'pages/sign-up-request.scss';
+@import 'pages/terms-and-conditions-modal.scss';
+@import 'pages/signup-request-list.scss';
+@import 'pages/signup-request-success-modal.scss';
+@import 'pages/login.scss';
+@import 'pages/new-project.scss';
+@import 'pages/project-overview.scss';
+@import 'pages/cubicle-overview.scss';
+@import 'pages/user-profile.scss';
+@import 'pages/forgot-password.scss';
+@import 'pages/success-modal.scss';
+@import 'pages/reset-password.scss';
+@import 'pages/customer-management.scss';
+@import 'pages/suspend-remove-user-modal.scss';
+@import 'pages/distributor-management.scss';
+@import 'pages/customers-of-distributor.scss';
+@import 'pages/user-overview.scss';
+@import 'pages/view-report.scss';
+@import 'pages/past-projects.scss';
+@import 'pages/remove-project-modal.scss';
+
+/*------------import-media-scss-file------------*/
+@import 'media.scss';
+
+.activated-menu {
+    .p-panelmenu-panel {
+        .p-panelmenu-content {
+            .p-submenu-list {
+                .p-menuitem {
+                    .p-menuitem-link-active {
+                        background-color: #185ADB;
+                        border-top-left-radius: 6px;
+                        border-bottom-left-radius: 6px;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,80 @@
+.p-accordion {
+    .p-accordion-header {
+        .p-accordion-header-link {
+            padding: 1.25rem;
+            border: none;
+            // color: #6c757d;
+            // background: #f8f9fa;
+            font-weight: 700;
+            // border-radius: 6px;
+            transition: box-shadow 0.2s;
+            transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+            // border: 2px solid orange;
+            box-shadow: 0px 3px 6px #bababa;
+
+            .p-accordion-toggle-icon {
+                margin-right: 0.5rem;
+              }
+          }
+
+          &:not(.p-disabled) {
+            .p-accordion-header-link{
+                &:focus {
+                    outline: 0 none;
+                    outline-offset: 0;
+                    // box-shadow: 0 0 0 0.2rem #BFDBFE;
+                  }
+            }
+
+            &.p-highlight {
+                .p-accordion-header-link {
+                    background: #f8f9fa;
+                    border-color: #dee2e6;
+                    color: #343a40;
+                    // border: 2px solid red ;
+                    box-shadow: 0px 3px 6px #bababa;
+                    // border-bottom-right-radius: 0;
+                    // border-bottom-left-radius: 0;
+                  }
+
+                  &:hover {
+                    .p-accordion-header-link {
+                        // border-color: #dee2e6;
+                        // background: #e9ecef;
+                        color: #343a40;
+                      }
+                  }
+            }
+          }
+
+          &:not(.p-highlight){
+            &:not(.p-disabled){
+                &:hover {
+                    .p-accordion-header-link {
+                        // background: #e9ecef;
+                        // border-color: #dee2e6;
+                        color: #343a40;
+                      }
+                }
+            }
+          }
+    }
+
+    .p-accordion-content {
+        padding: 1.25rem;
+        // border: 1px solid #dee2e6;
+        // background: #ffffff;
+        // color: #495057;
+        border-top: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        border-bottom-right-radius: 6px;
+        border-bottom-left-radius: 6px;
+      }
+
+      p-accordiontab {
+        .p-accordion-tab {
+            margin-bottom: 4px;
+          }
+      }
+}

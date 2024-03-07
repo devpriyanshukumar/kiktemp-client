@@ -1,0 +1,27 @@
+<!-- Desktop version -->
+<div class="side-menu-container-desktop">
+    <div class="content">
+        <div class="menu-buttons">
+            <button pButton type="button" icon="fas fa-chart-pie" routerLink="dashboard" (click)="navigateToDashboard()">DASHBOARD</button>
+            <p-panelMenu styleClass="activated-menu" [model]="items" [multiple]="false"></p-panelMenu>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="real-time">
+            {{ (currentDate | async) | date: 'EEEE, MMMM d, y' }}
+        </div>
+        <div class="copyright">
+            © 2020 KIK LANKA (PVT) LTD
+        </div>
+    </div>
+</div>
+
+<!-- Mobile version -->
+<div class="side-menu-container-mobile" *ngIf="showMobileSideMenu">
+    <div class="content">
+        <div class="menu-buttons">
+            <button pButton type="button" icon="fas fa-chart-pie" routerLink="dashboard" (click)="navigateToDashboard()">DASHBOARD</button>
+            <p-panelMenu [model]="items" [multiple]="false"></p-panelMenu>
+        </div>
+    </div>
+</div>

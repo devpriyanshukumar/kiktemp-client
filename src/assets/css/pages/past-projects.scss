@@ -1,0 +1,143 @@
+.past-projects-page {
+  .page-header {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 20px;
+
+    .tab-content {
+      margin-top: 30px;
+
+      .search-container {
+        .p-inputgroup {
+          padding: 0;
+          margin-bottom: 20px;
+
+          .p-inputgroup-addon {
+            background-color: #D7E1F3;
+            border: none;
+            height: 35px;
+
+            .fas {
+              font-size: 15px;
+            }
+          }
+
+          .p-inputtext {
+            background-color: #D7E1F3;
+            border: none;
+            height: 35px;
+          }
+
+          ::placeholder {
+            font-size: 13px;
+          }
+        }
+      }
+
+      .no-projects {
+        text-align: center;
+
+        h3 {
+          font-size: 14px;
+          margin-top: 10px;
+          text-align: center;
+          font-weight: 500;
+        }
+
+        .no-data-img {
+          margin-top: 20px;
+          width: 300px;
+        }
+      }
+
+      .view-project-btn {
+        padding: 6px 10px;
+        border: none;
+        background-color: #185ADB;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+
+        .navigate {
+          margin-left: 10px;
+          font-size: 16px;
+        }
+      }
+
+      .view-project-btn:hover {
+        opacity: 0.9;
+      }
+
+      .delete-project-btn {
+        padding: 6px 10px;
+        border: none;
+        background-color: #E52000;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 5px;
+
+        .delete {
+          margin-left: 10px;
+          font-size: 16px;
+        }
+      }
+
+      .delete-project-btn:hover {
+        opacity: 0.9;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 20px 10px;
+
+    .search-container {
+      .p-inputgroup {
+        padding: 10px;
+        margin: 0;
+      }
+    }
+
+    .no-projects {
+
+      h3 {
+        font-size: 13px;
+        margin-top: 25%;
+      }
+
+      .no-data-img {
+        margin-top: 50px;
+        width: 200px;
+      }
+    }
+  }
+}
+
+@media (max-width: 320px) {
+  .card {
+    .p-tabview {
+      .p-tabview-nav {
+        li {
+          .p-tabview-nav-link {
+            width: 125px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .btn-text {
+    display: none;
+  }
+}

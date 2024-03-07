@@ -1,0 +1,222 @@
+.cubicle-overview-page {
+    padding: 20px;
+
+    &.blur {
+        opacity: 0.5;
+        background-color: rec;
+    }
+
+    .page-header {
+        font-size: 14px;
+        font-weight: 500;
+        padding-top: 10px;
+    }
+
+    .cubicle-overview {
+        margin-top: 15px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 0.5px solid #A7A7A7;
+        border-radius: 10px;
+
+        .update-cubicle {
+            text-align: end;
+
+            i {
+                cursor: pointer;
+            }
+        }
+
+        .data-field {
+            padding: 4px;
+            border: 1px solid #98B0E0;
+            margin-left: 8px;
+            width: 60%;
+            border-radius: 4px;
+        }
+
+        .input-data-field {
+            margin-top: 5px;
+            padding: 8px;
+            border: 1px solid #98B0E0;
+            background-color: #e3ebfb;
+            border-radius: 4px;
+            width: 75%;
+        }
+    }
+
+    .p-accordion p-accordiontab {
+        .p-accordion-tab {
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    }
+
+    .p-accordion-header-link {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+
+    .p-accordion {
+        .p-accordion-header {
+            &:not(.p-disabled) {
+                &.p-highlight {
+                    .p-accordion-header-link {
+                        background-color: #c9d9f7;
+                        // border-radius: 5rem;
+                    }
+                }
+            }
+
+            .p-accordion-header-link {
+                background-color: #c9d9f7;
+                border-radius: 5px;
+                height: 4rem;
+            }
+        }
+
+        .p-accordion-content {
+            // background-color: rgb(211, 211, 211);
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 0.5px solid #A7A7A7;
+        }
+    }
+
+    .accordian-header {
+        span {
+            padding: 3px;
+
+            i {
+                margin-right: 5px;
+                font-size: 15px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .total-content {
+        background-color: #B4C4E2;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        border-radius: 3px;
+
+        p {
+            font-size: larger;
+            font-weight: 500;
+        }
+    }
+
+    tbody {
+        tr:nth-child(even) {
+            background: #f2f6fa;
+        }
+    }
+
+    .p-datatable {
+        .p-datatable-thead {
+            &>tr {
+                &>th {
+                    background-color: #c9d9f7;
+                    text-align: left;
+                }
+            }
+        }
+
+        .p-datatable-tbody {
+            &>tr {
+                &>td {
+                    border: none;
+                    text-align: left;
+                }
+            }
+        }
+    }
+
+    .button-container {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        button {
+            border: none;
+            color: white;
+            padding: 7px;
+        }
+
+        .generate-report-btn {
+            background-color: #185ADB;
+        }
+    }
+
+}
+
+.cubicle-overview-modal-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 45rem;
+    height: 45rem;
+    background-color: #fff;
+}
+
+.cubicle-overview-delete-confirmation-modal-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 45rem;
+    height: 7rem;
+    background-color: #fff;
+    text-align: center;
+
+    p {
+        font-size: 16px;
+        color: #bc351f;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 1025px) {}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 600px) {
+    .cubicle-overview-modal-content {
+        width: 26rem;
+        height: 45rem;
+    }
+
+    .cubicle-overview-delete-confirmation-modal-content {
+        width: 20rem;
+        height: 5rem;
+
+        p {
+            font-size: 12px;
+            color: #bc351f;
+            padding: 4px;
+        }
+    }
+
+    .cubicle-overview-page {
+        .cubicle-overview {
+
+            .data-field {
+                width: 100%;
+                text-overflow: ellipsis;
+            }
+
+            .input-data-field {
+                width: 100%;
+            }
+        }
+    }
+
+}

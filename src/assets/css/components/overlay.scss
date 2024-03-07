@@ -1,0 +1,157 @@
+.p-overlaypanel {
+  background: white;
+  border: 0 none;
+  border-radius: 3px;
+  box-shadow: 0px 8px 10px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14),
+    0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+
+  &:after {
+    border: solid transparent;
+    border-bottom-color: white;
+  }
+  &:before {
+    border: solid transparent;
+    border-bottom-color: white;
+  }
+  .p-overlaypanel-content {
+    padding: 15px;
+  }
+  .p-overlaypanel-close {
+    background: #343a40;
+    color: $white;
+    width: 15px;
+    height: 15px;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    &:enabled:hover {
+      background: #0D1F40;
+      color: $white;
+    }
+    .p-overlaypanel-close-icon {
+      font-size: 8px;
+      line-height: 15px;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+  &.p-overlaypanel-flipped:after {
+    border-top-color: white;
+  }
+  &.p-overlaypanel-flipped:before {
+    border-top-color: white;
+  }
+}
+
+.tip-overlay {
+  &.p-overlaypanel {
+    background: #343a40;
+    color: $inverse;
+    &:after {
+      border-bottom-color: #343a40;
+    }
+    &:before {
+      border-bottom-color: #343a40;
+    }
+    &.p-overlaypanel-flipped:after {
+      border-top-color: #343a40;
+    }
+    &.p-overlaypanel-flipped:before {
+      border-top-color: #343a40;
+    }
+  }
+  .table {
+    tr {
+      td {
+        color: $white;
+        padding: 6px;
+      }
+    }
+
+    tr {
+      th {
+        color: $white;
+      }
+    }
+  }
+
+  .p-float-label {
+    label {
+      color: $white;
+    }
+  }
+  .p-radiobutton-label {
+    color: $white;
+  }
+}
+
+.tip-overlay-extended {
+  &.p-overlaypanel {
+    box-shadow: none;
+    background: #3c3c3c;
+    color: #fff;
+    border: none;
+
+    &:before {
+      border-width: 10px;
+      margin-left: -10px;
+      bottom: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(200, 200, 200, 0);
+      border-bottom-color: #3c3c3c;
+    }
+    
+    &:after{
+      border-top-color: #3c3c3c;
+      border-bottom-color: #3c3c3c;
+    }
+
+    h6 {
+      color: #fff;
+    }
+  }
+
+  .p-datatable {
+    .p-datatable-tbody {
+      tr:nth-child(even){
+        background-color: transparent;
+      }
+    }
+  }
+
+  .table {
+    tr {
+      td {
+        color: $white;
+        padding: 6px;
+      }
+    }
+
+    tr {
+      th {
+        color: $white;
+      }
+    }
+  }
+
+  .p-inputtext {
+    color: $white;
+    .p-float-label {
+      label {
+        color: $white;
+      }
+    }
+  }
+
+  .p-radiobutton-label {
+    color: $white;
+  }
+}
+

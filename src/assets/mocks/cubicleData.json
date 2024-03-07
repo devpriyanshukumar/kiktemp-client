@@ -1,0 +1,142 @@
+{
+    "cubicleOverviewDataVM" : {
+        "projectId" : 11,
+        "projectNo" : null,
+        "cubicleId" : 1,
+
+        "cubicleOverViewGeneralDataVM" : {
+                "coolingSystem" : "coolingSystem Description 0",
+                "horizontalSeparation" : 0,
+                "position" : "position Description 0",
+                "louverArea" : 12,
+                "height" : 15,
+                "width" : 20,
+                "depth" : 25,
+                "targetTemperature" : 30
+        },
+
+        "powerCableDataVMs" : [
+            {
+                "id" : 0,
+                "description" : "Powe cable 1",
+                "cableArrangement" : "In a cable trunking",
+                "crossSection" : 240,
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86
+            },
+            {
+                "id" : 1,
+                "description" : "Powe cable 2",
+                "cableArrangement" : "In a cable trunking",
+                "crossSection" : 240,
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86
+            },
+            {
+                "id" : 2,
+                "description" : "Powe cable 3",
+                "cableArrangement" : "In a cable trunking",
+                "crossSection" : 240,
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86
+            },
+            {
+                "id" : 3,
+                "description" : "Powe cable 4",
+                "cableArrangement" : "In a cable trunking",
+                "crossSection" : 240,
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86
+            }
+        ],
+
+        "busBarDataVMs" : [
+            {
+                "id" : 0,
+                "description" : "Bus Bar 1",
+                "arrangement" : "5one bar",
+                "crossSectionalType" : "50*5",
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86,
+                "size" : "size Description 0"
+            },
+            {
+                "id" : 1,
+                "description" : "Bus Bar 2",
+                "arrangement" : "5one bar",
+                "crossSectionalType" : "50*5",
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86,
+                "size" : "size Description 1"
+            },
+            {
+                "id" : 2,
+                "description" : "Bus Bar 3",
+                "arrangement" : "5one bar",
+                "crossSectionalType" : "50*5",
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86,
+                "size" : "size Description 0"
+            },
+            {
+                "id" : 3,
+                "description" : "Bus Bar 4",
+                "arrangement" : "5one bar",
+                "crossSectionalType" : "50*5",
+                "inputCurrent" : 61,
+                "length" : 5,
+                "maximumCurrent" : 230,
+                "powerLossWM" : 6.6,
+                "powerLossW" : 8.86,
+                "size" : "size Description 2"
+            }
+        ],
+
+        "customSwitchgearDataVMs" : [
+            {
+                "id" : 0,
+                "manufacture" : "manufacture 1",
+                "modalName" : "Model 1",
+                "quantity" : 50,
+                "rating" : 2,
+                "unitPowerLoss" : 12,
+                "powerLoss" : 20
+            },
+            {
+                "id" : 1,
+                "manufacture" : "manufacture 2",
+                "modalName" : "Model 2",
+                "quantity" : 50,
+                "rating" : 2,
+                "unitPowerLoss" : 12,
+                "powerLoss" : 20
+            }
+        ],
+
+        "switchgearDataVMs" : null
+    },
+    "message": "string",
+    "messageDetails": "string",
+    "isSuccess": true
+  }

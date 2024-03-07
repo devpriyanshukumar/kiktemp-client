@@ -1,0 +1,87 @@
+.sign-up-request-list-page {
+
+  .page-header {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 20px;
+
+    .signup-btn {
+      padding: 6px 10px;
+      border: none;
+      background-color: #185ADB;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .signup-btn:hover {
+      opacity: 0.8;
+    }
+
+    .no-requests {
+      text-align: center;
+
+      h3 {
+        font-size: 14px;
+        margin-top: 5%;
+        text-align: center;
+        font-weight: 500;
+      }
+
+      .no-data-img {
+        margin-top: 20px;
+        width: 300px;
+      }
+    }
+  }
+
+  @media (max-width: 320px) {
+    .card {
+      .no-requests {
+
+        h3 {
+          font-size: 13px;
+          margin-top: 25%;
+        }
+
+        .no-data-img {
+          margin-top: 50px;
+          width: 200px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    .card {
+      .no-requests {
+
+        h3 {
+          font-size: 13px;
+          margin-top: 15%;
+        }
+
+        .no-data-img {
+          margin-top: 30px;
+          width: 250px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .card {
+      .signup-btn {
+        padding: 5px;
+      }
+
+      .p-datatable .p-datatable-tbody>tr>td:nth-child(8) {
+        padding: 0;
+      }
+    }
+  }
+}

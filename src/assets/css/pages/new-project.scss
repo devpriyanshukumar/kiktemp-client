@@ -1,0 +1,181 @@
+.new-project-page {
+
+  .page-header {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px;
+  }
+
+  .form-field {
+    margin-left: 4rem;
+    margin-top: 2rem;
+
+    .p-inputtext {
+      border: 1px solid #c5d6e7;
+      background-color: #ebf1f8;
+      padding: 10px;
+      border-radius: 5px;
+      height: auto;
+    }
+
+    label {
+      font-size: 11px;
+      color: #9dabba;
+    }
+
+    .required {
+      color: red;
+    }
+
+    .custom-drop-down {
+      padding: 9px 11px;
+      height: 39px;
+
+      .p-inputtext {
+        border: none;
+        background-color: #ebf1f8;
+        padding: 0px;
+        border-radius: 5px;
+      }
+    }
+
+    .custom-drop-down:not(.p-disabled):hover {
+      border: 1px solid #c5d6e7;
+    }
+  }
+
+  .image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 4rem;
+
+    img {
+      width: 60%;
+    }
+  }
+
+  .save-btn {
+    width: 6rem;
+    background-color: #185adb;
+  }
+
+  .reset-btn {
+    width: 6rem;
+    background-color: #A7A7A7;
+  }
+
+  .p-dropdown {
+    padding: 8px;
+    border: 1px solid #C5D6E7;
+  }
+
+  .p-dropdown-filter-container {
+    .p-dropdown-filter {
+      padding: 5px !important;
+      padding-bottom: 0px !important;
+      height: 3rem;
+    }
+
+    .p-dropdown-filter-icon {
+      right: 0;
+      margin-right: 10px;
+      font-size: 15px;
+    }
+  }
+
+  .p-dropdown-panel .p-dropdown-items {
+    max-height: 15rem;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 768px) {
+
+    .form-field {
+      margin-left: 0.5rem;
+      margin-top: 1rem;
+    }
+  }
+
+}
+.new-project-confirmation {
+  .p-dialog {
+    .p-dialog-header {
+
+      h5 {
+        font-size: 16px;
+      }
+
+      .p-dialog-header-icon {
+        color: #000000;
+        font-weight: 1000;
+      }
+    }
+  }
+  .new-project-confirm-content {
+    height: 11rem;
+    width: 40rem;
+    padding: 1rem;
+
+    p {
+      line-height: 16px;
+      color: #185ADB;
+      margin-top: -1rem;
+    }
+
+    .save-btn {
+      background-color: #185adb;
+    }
+  
+    .reset-btn {
+      background-color: #A7A7A7;
+    }
+  }
+}
+
+@media only screen and (max-width: 1920px) {}
+
+@media only screen and (max-width: 1600px) {}
+
+@media only screen and (max-width: 1440px) {}
+
+@media only screen and (max-width: 1367px) {}
+
+@media only screen and (max-width: 1280px) {}
+
+@media only screen and (max-width: 1080px) {}
+
+@media only screen and (max-width: 992px) {}
+
+@media only screen and (max-width: 800px) {}
+
+@media only screen and (max-width: 667px) {}
+
+@media only screen and (max-width: 480px) {
+  .new-project-confirmation {
+    .p-dialog {
+      .p-dialog-header {
+  
+        h5 {
+          font-size: 15px;
+        }
+      }
+    } 
+      
+    .new-project-confirm-content {
+      height: 13rem;
+      width: 30rem;
+    }
+  }
+}
+
+@media only screen and (max-width: 420px) {}
+
+@media only screen and (max-width: 360px) {
+  .new-project-confirmation {
+    .new-project-confirm-content {
+      height: 12rem;
+      width: 22rem;
+    }
+  }
+}

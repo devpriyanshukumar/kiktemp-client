@@ -1,0 +1,1249 @@
+<div class="content-body cubicle-overview-page">
+  <div class="page-header">Cubicle Overview</div>
+  <span class="flex page-header pt-2">
+    <i class="fa-solid fa-circle-info mr-2"></i>
+    <h3>General Details</h3>
+  </span>
+
+  <div class="cubicle-overview">
+    <div class="grid">
+      <div class="col-12 update-cubicle">
+        <i class="fa-solid fa-pen" style="cursor: pointer;" (click)="editGeneralData()"></i>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12 sm:col-6 md:col-6 lg:col-5 xl:col-4 flex align-items-center mt-2">
+        <label htmlFor="projectNo" style="width: 5rem;">Project No</label>
+        <div id="projectNo" class="data-field">{{projectNo}}</div>
+      </div>
+
+      <div class="col-12 sm:col-6 md:col-6 lg:col-5 xl:col-4 flex align-items-center mt-2">
+        <label htmlFor="cubicleId" style="width: 5rem;">Cubicle Id</label>
+        <div id="cubicleId" class="data-field">{{cubicleNo}}</div>
+      </div>
+    </div>
+
+    <div class="grid mt-4">
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="CoolingSystem">Cooling System <span class="required"> *</span></label>
+        <div id="CoolingSystem" class="input-data-field">{{cubicleOverViewGeneralDataVM.coolingSystem}}</div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="HorizontalSeperation">Horizontal Seperation <span class="required"> *</span></label>
+        <div id="HorizontalSeperation" class="input-data-field">{{cubicleOverViewGeneralDataVM.horizontalSeparation}}
+        </div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="Position">Position <span class="required"> *</span></label>
+        <div id="Position" class="input-data-field">{{cubicleOverViewGeneralDataVM.position}}</div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="LouverArea ">Louver Area (cm * cm) <span class="required"> *</span></label>
+        <div id="LouverArea " class="input-data-field">{{cubicleOverViewGeneralDataVM.louverArea}}</div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="Height">Height (mm)<span class="required"> *</span></label>
+        <div id="Height" class="input-data-field">{{cubicleOverViewGeneralDataVM.height}}</div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="Width">Width (mm)<span class="required"> *</span></label>
+        <div id="Width" class="input-data-field">{{cubicleOverViewGeneralDataVM.width}}</div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="Depth">Depth (mm)<span class="required"> *</span></label>
+        <div id="Depth" class="input-data-field">{{cubicleOverViewGeneralDataVM.depth}}</div>
+      </div>
+
+      <div class="col-12 sm:col-4 mt-3 ">
+        <label htmlFor="Target Temperature">Target Temperature (&#8451;)<span class="required"> *</span></label>
+        <div id="TargetTemperature" class="input-data-field">{{cubicleOverViewGeneralDataVM.targetTemperature}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-12">
+      <p-accordion [multiple]="true">
+        <!-- Power cable details -->
+        <p-accordionTab let i=index>
+          <ng-template pTemplate="header">
+            <div class="accordian-header">
+              <span class="flex align-items-end">
+                <i class="fa-solid fa-circle-dot"></i>
+                <p>Power Cable Details ({{powerCableDataVMs ? powerCableDataVMs.length : 0}})</p>
+              </span>
+            </div>
+          </ng-template>
+
+          <ng-container>
+            <div class="grid">
+              <div class="col-12 power-cable-detail-content">
+                <div class="grid">
+                  <div class="col-12 text-right mb-3">
+                    <button class="add-data-btn" (click)="addCubicleOverviewData(0)">
+                      <span class="flex align-items-center">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        ADD POWER CABLE
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="grid">
+                  <div class="col-12">
+                    <p-table [value]="powerCableDataVMs" [paginator]="true" [rows]="5"
+                      [rowsPerPageOptions]="[5, 10, 50, 100]">
+                      <ng-template pTemplate="header">
+                        <tr class="table-header">
+                          <th class="number-col">Id</th>
+                          <th>Description</th>
+                          <th>Cable Arrangement</th>
+                          <th>Cross Section (mm*mm)</th>
+                          <th>Input Current (A)</th>
+                          <th>Length (m)</th>
+                          <th>Maximum Current (A)</th>
+                          <th>Max Power Loss (W/m)</th>
+                          <th>Power Loss (W)</th>
+                          <th>Action</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+                        <tr>
+                          <td>
+                            <h4>{{rowIndex + 1}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.DESCRIPTION}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.CABLE_ARRANGEMENT}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.CROSS_SECTIONAL_AREA}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.INPUT_CURRENT}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.CABLE_LENGTH}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.MAXIMUM_CURRENT}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.MAXIMUM_POWER_LOSS | currency:'':'':'1.2-2'}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.POWER_LOSS | currency:'':'':'1.2-2' }}</h4>
+                          </td>
+                          <td class="flex">
+                            <button class="action-btn edit" (click)="editAccordianData(0, rowIndex, data?.id)">
+                              <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="action-btn delete" (click)="deleteAccordianData(0, data?.id)">
+                              <i class="fa-solid fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage" let-columns>
+                        <tr>
+                          <td [attr.colspan]="10">
+                            <h5>No records found</h5>
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 flex justify-content-end mt-3">
+                <div class="total-content">
+                  <p>Total Power Loss = {{powerCableTotalPowerLoss != 0 ? (powerCableTotalPowerLoss | currency:'':'':'1.2-2') : 0}} W
+                  </p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </p-accordionTab>
+
+        <!-- Bus bar details  -->
+        <p-accordionTab>
+          <ng-template pTemplate="header">
+            <div class="accordian-header">
+              <span class="flex align-items-end">
+                <i class="fa-solid fa-dice-d6"></i>
+                <p>Bus Bar Details ({{busBarDataVMs ? busBarDataVMs.length : 0}})</p>
+              </span>
+            </div>
+          </ng-template>
+
+          <ng-container>
+            <div class="grid">
+              <div class="col-12 power-cable-detail-content">
+                <div class="grid">
+                  <div class="col-12 text-right mb-3">
+                    <button class="add-data-btn" (click)="addCubicleOverviewData(1)">
+                      <span class="flex align-items-center">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        ADD BUS BAR
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="grid">
+                  <div class="col-12">
+                    <p-table [value]="busBarDataVMs" [paginator]="true" [rows]="5"
+                      [rowsPerPageOptions]="[5, 10, 50, 100]">
+                      <ng-template pTemplate="header">
+                        <tr class="table-header">
+                          <th>Id</th>
+                          <th>Description</th>
+                          <th>Type</th>
+                          <th>Input Current (A)</th>
+                          <th>Length (m)</th>
+                          <th>Maximum Current (A)</th>
+                          <th>Conductor Temperature (&#8451;)</th>
+                          <th>Height and Thickness</th>
+                          <th>Max Power Loss (W/m)</th>
+                          <th>Power Loss (W)</th>
+                          <th>Action</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+                        <tr>
+                          <td>
+                            <h4>{{rowIndex + 1}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.description}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.busBarType}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.inputCurrent}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.busBarlength}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.maximumCurrent}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.conductortemperature}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.heightAndThickness}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.powerLossWM | currency:'':'':'1.2-2'}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.powerLossW | currency:'':'':'1.2-2'}}</h4>
+                          </td>
+                          <td class="flex">
+                            <button class="action-btn edit" (click)="editAccordianData(1, rowIndex, data?.id)">
+                              <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="action-btn delete" (click)="deleteAccordianData(1, data?.id)">
+                              <i class="fa-solid fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage" let-columns>
+                        <tr>
+                          <td [attr.colspan]="10">
+                            <h5>No records found</h5>
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 flex justify-content-end mt-3">
+                <div class="total-content">
+                  <p>Total Power Loss = {{busBarTotalPowerLoss != 0 ? (busBarTotalPowerLoss | currency:'':'':'1.2-2') : 0}} W</p>
+                </div>
+                </div>
+            </div>
+          </ng-container>
+        </p-accordionTab>
+
+        <!-- Switchgear Details  -->
+        <p-accordionTab>
+          <ng-template pTemplate="header">
+            <div class="accordian-header">
+              <span class="flex align-items-end">
+                <i class="fa-solid fa-diagram-project"></i>
+                <p>Switchgear Details ({{switchgearDataVMs ? switchgearDataVMs.length : 0}})</p>
+              </span>
+            </div>
+          </ng-template>
+
+          <ng-container>
+            <div class="grid">
+              <div class="col-12 power-cable-detail-content">
+                <div class="grid">
+                  <div class="col-12 text-right mb-3">
+                    <button class="add-data-btn" (click)="addCubicleOverviewData(2)">
+                      <span class="flex align-items-center">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        ADD SWITCHGEAR
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="grid">
+                  <div class="col-12">
+                    <p-table [value]="switchgearDataVMs" [paginator]="true" [rows]="5"
+                      [rowsPerPageOptions]="[5, 10, 50, 100]">
+                      <ng-template pTemplate="header">
+                        <tr class="table-header">
+                          <th>Id</th>
+                          <th>Manufacturer</th>
+                          <th>Type</th>
+                          <th>Range</th>
+                          <th>Model name</th>
+                          <th>Quantity</th>
+                          <!-- <th>Rating</th> -->
+                          <th>Power Loss (W)</th>
+                          <th>Action</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+                        <tr>
+                          <td>
+                            <h4>{{rowIndex + 1}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.manufacture}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.type}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.range}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.modalName}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.quantity}}</h4>
+                          </td>
+                          <!-- <td><h4>{{data?.rating}}</h4></td> -->
+                          <td>
+                            <h4>{{data?.powerLoss | currency:'':'':'1.2-2'}}</h4>
+                          </td>
+                          <td class="flex">
+                            <button class="action-btn edit" (click)="editAccordianData(2, rowIndex, data?.id)">
+                              <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="action-btn delete" (click)="deleteAccordianData(2, data?.id)">
+                              <i class="fa-solid fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage" let-columns>
+                        <tr>
+                          <td [attr.colspan]="10">
+                            <h5>No records found</h5>
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-12 flex justify-content-end mt-3" *ngIf="switchgearDataVMs && switchgearDataVMs.length" -->
+              <div class="col-12 flex justify-content-end mt-3">
+                <div class="total-content">
+                  <p>Total Power Loss = {{switchGearTotalPowerLoss !=0 ? (switchGearTotalPowerLoss | currency:'':'':'1.2-2'):0}} W</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </p-accordionTab>
+
+        <!-- Custom Switchgear Details  -->
+        <p-accordionTab>
+          <ng-template pTemplate="header">
+            <div class="accordian-header">
+              <span class="flex align-items-end">
+                <i class="fa-solid fa-gears"></i>
+                <p>Custom Device Details ({{customSwitchgearDataVMs ? customSwitchgearDataVMs.length : 0}})</p>
+              </span>
+            </div>
+          </ng-template>
+
+          <ng-container>
+            <div class="grid">
+              <div class="col-12 power-cable-detail-content">
+                <div class="grid">
+                  <div class="col-12 text-right mb-3">
+                    <button class="add-data-btn" (click)="addCubicleOverviewData(3)">
+                      <span class="flex align-items-center">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        ADD CUSTOM SWITCHGEAR
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="grid">
+                  <div class="col-12">
+                    <p-table [value]="customSwitchgearDataVMs" [paginator]="true" [rows]="5"
+                      [rowsPerPageOptions]="[5, 10, 50, 100]">
+                      <ng-template pTemplate="header">
+                        <tr class="table-header">
+                          <th>Id</th>
+                          <th>Manufacturer</th>
+                          <th>Model</th>
+                          <th>Quantity</th>
+                          <th>Rating</th>
+                          <th>Unit Power Loss (W)</th>
+                          <th>Power Loss (W)</th>
+                          <th>Action</th>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="body" let-data let-rowIndex="rowIndex">
+                        <tr>
+                          <td>
+                            <h4>{{rowIndex + 1}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.manufacturer}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.model}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.quantity}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.rating}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.unitPowerLoss | currency:'':'':'1.2-2'}}</h4>
+                          </td>
+                          <td>
+                            <h4>{{data?.powerLoss | currency:'':'':'1.2-2'}}</h4>
+                          </td>
+                          <td class="flex">
+                            <button class="action-btn edit"
+                              (click)="editAccordianData(3, rowIndex, data?.customSwitchGearId)">
+                              <i class="fa-solid fa-pen"></i>
+                            </button>
+                            <button class="action-btn delete"
+                              (click)="deleteAccordianData(3, data?.customSwitchGearId)">
+                              <i class="fa-solid fa-trash"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </ng-template>
+                      <ng-template pTemplate="emptymessage" let-columns>
+                        <tr>
+                          <td [attr.colspan]="10">
+                            <h5>No records found</h5>
+                          </td>
+                        </tr>
+                      </ng-template>
+                    </p-table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 flex justify-content-end mt-3">
+                <div class="total-content">
+                  <p>Total Power Loss = {{customSwitchGearTotalPowerLoss !=0 ? (customSwitchGearTotalPowerLoss | currency:'':'':'1.2-2') : 0}} W</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+  </div>
+  <div class="button-container">
+    <!-- <button pbutton icon="fas fa-file-pdf" (click)="navigateToViewReport()" pButton label="Generate Report"
+      class="generate-report-btn" [disabled]="cubicleTotalPowerLoss === 0"></button> -->
+    <button pbutton icon="fas fa-backward" (click)="backToProjectOverview()" pButton label="Back to Project Overview"
+    class="cancel-btn"></button>
+    <button pbutton icon="fas fa-circle-plus" (click)="addAnotherCubicle()" pButton label="Add another cubicle"
+    class="add-btn"></button>
+    <button pbutton icon="fas fa-file-pdf" (click)="navigateToViewReport()" pButton label="Save Data & Generate Report"
+      class="generate-report-btn"></button>
+  </div>
+</div>
+
+<!-- Cubicle overview modal  -->
+<!-- <p-dialog [modal]="true" [visible]="true" class="edit-project-main-data"> -->
+<p-dialog [modal]="true" [(visible)]="showCubicleOverView" class="edit-project-main-data"
+  (onHide)="closeCubicleOverview()">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #185ADB;">Add General details</h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 cubicle-overview-modal-content">
+      <!-- <p-scrollPanel [style]="{width: '100%', height: '44rem'}"> -->
+      <form [formGroup]="cubicleMainDataForm">
+
+        <button *ngIf="!hasCubicleMainData" icon="fas fa-backward" label="BACK TO PROJECT OVERVIEW" class="cancel-btn-light" pButton
+        (click)="backToProjectOverview()"></button>
+        
+        <!-- coolingSystem -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="coolingSystem" class="ml-1 mb-2">Cooling System <span class="required">*</span></label>
+          <p-dropdown [options]="coolingSystemList" optionLabel="value" id="coolingSystem" styleClass="custom-drop-down"
+            formControlName="coolingSystem" placeholder="Select Cooling System">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(cubicleMainDataForm.get('coolingSystem')?.dirty || cubicleMainDataForm.get('coolingSystem')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['coolingSystem'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('coolingSystem')?.invalid" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- horizontalSeparation -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="horizontalSeparation" class="ml-1 mb-2">Horizontal Separation <span
+              class="required">*</span></label>
+          <p-dropdown [options]="horizontalSeperationList !" optionLabel="description" id="horizontalSeparation"
+            styleClass="custom-drop-down" formControlName="horizontalSeparation"
+            placeholder="Select Horizontal Separation">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(cubicleMainDataForm.get('horizontalSeparation')?.dirty || cubicleMainDataForm.get('horizontalSeparation')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['horizontalSeparation'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('horizontalSeparation')?.invalid" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- position -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="position" class="ml-1 mb-2">Position <span class="required">*</span></label>
+          <p-dropdown [options]="positionList" optionLabel="value" id="position" styleClass="custom-drop-down"
+            formControlName="position" placeholder="Select Position">
+          </p-dropdown>
+        </div>
+
+        <!-- targetTemperature -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="targetTemperature" class="ml-1 mb-2">Target Temperature (&#8451;)<span
+              class="required">*</span></label>
+          <p-dropdown [options]="targetTemperatureList" optionLabel="temperature" id="targetTemperature"
+            styleClass="custom-drop-down" formControlName="targetTemperature" placeholder="Select Target Temperature">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(cubicleMainDataForm.get('targetTemperature')?.dirty || cubicleMainDataForm.get('targetTemperature')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['targetTemperature'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(cubicleMainDataForm.get('position')?.dirty || cubicleMainDataForm.get('position')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['position'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('position')?.invalid" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- louverArea -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="louverArea" class="ml-1 mb-2">Louver Area (cm*cm) <span class="required">*</span></label>
+          <input pInputText id="louverArea" formControlName='louverArea' placeholder="Enter Louver Area" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(cubicleMainDataForm.get('louverArea')?.dirty || cubicleMainDataForm.get('louverArea')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['louverArea'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('louverArea')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- height -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="height" class="ml-1 mb-2">Height (mm) <span class="required">*</span></label>
+          <input pInputText id="height" formControlName='height' placeholder="Enter Height" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(cubicleMainDataForm.get('height')?.dirty || cubicleMainDataForm.get('height')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['height'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('height')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- width -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="width" class="ml-1 mb-2">Width (mm) <span class="required">*</span></label>
+          <input pInputText id="width" formControlName='width' placeholder="Enter Width" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(cubicleMainDataForm.get('width')?.dirty || cubicleMainDataForm.get('width')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['width'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('width')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+        
+        <!-- depth -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="depth" class="ml-1 mb-2">Depth (mm) <span class="required">*</span></label>
+          <input pInputText id="depth" formControlName='depth' placeholder="Enter Depth" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(cubicleMainDataForm.get('depth')?.dirty || cubicleMainDataForm.get('depth')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!cubicleMainDataForm.controls['depth'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="cubicleMainDataForm.get('depth')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <div class="col-12 flex flex-row justify-content-end mt-6 mb-3" style="padding-bottom: 2rem;">
+          <!-- <button *ngIf="!hasCubicleMainData" icon="fas fa-backward" label="BACK TO PROJECT OVERVIEW" class="cancel-btn" pButton
+            (click)="backToProjectOverview()"></button> -->
+          <button [label]="!hasCubicleMainData ? 'ADD' : 'UPDATE'" class="save-btn" pButton (click)="updateData(0)"
+            [disabled]="!getCoolingSystemControl?.value || !getHorizontalSeparationControl?.value || !getPositionControl?.value
+              || !getLouverAreaControl?.value || !getHeightControl?.value || !getWidthControl?.value || !getTargetTemperatureControl?.value
+              || !getDepthControl?.value || getLouverAreaControl?.hasError('pattern') || getHeightControl?.hasError('pattern') || getWidthControl?.hasError('pattern')
+              || getDepthControl?.hasError('pattern')"></button>
+        </div>
+      </form>
+      <!-- </p-scrollPanel> -->
+    </div>
+  </div>
+</p-dialog>
+
+<!-- Add Power cable modal  -->
+<!-- <p-dialog [modal]="true" [visible]="true" class="edit-project-main-data"> -->
+<p-dialog [modal]="true" [(visible)]="isShowAddPowerCableModel" class="edit-project-main-data"
+  (onHide)="onCloseEditModal()">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #185ADB;">Add a Power cable</h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 cubicle-overview-modal-content">
+      <!-- <p-scrollPanel [style]="{width: '100%', height: '44rem'}"> -->
+      <form [formGroup]="powerCableDataForm">
+
+        <!-- description -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="description" class="ml-1 mb-2">Description <span class="required">*</span></label>
+          <input pInputText id="description" formControlName='description' placeholder="Enter Description" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(powerCableDataForm.get('description')?.dirty || powerCableDataForm.get('description')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['description'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- insulation -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="insulation" class="ml-1 mb-2">Insulation Type <span class="required">*</span></label>
+          <p-dropdown [options]="insulationList" optionLabel="value" id="insulation" styleClass="custom-drop-down"
+            formControlName="insulation" placeholder="Select Insulation Type" (onChange)="onInsulationTypeChange()">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(powerCableDataForm.get('insulation')?.dirty || powerCableDataForm.get('insulation')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['insulation'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- conductorTemperature -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="installationMethod" class="ml-1 mb-2">Conductor Temperature (&#8451;) <span
+              class="required">*</span></label>
+          <p-dropdown [options]="powerCableConductorTemperatureList" optionLabel="value" id="conductorTemperature"
+            styleClass="custom-drop-down" formControlName="conductorTemperature" placeholder="Select Temperature"
+            (onChange)="getPowerCableMasterData(2, $event)">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(powerCableDataForm.get('conductorTemperature')?.dirty || powerCableDataForm.get('conductorTemperature')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['conductorTemperature'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- arrangementType -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="arrangementType" class="ml-1 mb-2">Arrangement Type <span class="required">*</span></label>
+          <p-dropdown [options]="cableArrangementList" optionLabel="value" id="arrangementType"
+            styleClass="custom-drop-down" formControlName="arrangementType" placeholder="Select Arrangement Type"
+            (onChange)="getPowerCableMasterData(3, $event)">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(powerCableDataForm.get('arrangementType')?.dirty || powerCableDataForm.get('arrangementType')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['arrangementType'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- installationType -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="installationType" class="ml-1 mb-2">Installation Type <span class="required">*</span></label>
+          <p-dropdown [options]="cableInstallationTypesList" optionLabel="value" id="installationType"
+            styleClass="custom-drop-down" formControlName="installationType" placeholder="Select Installation Type"
+            (onChange)="getPowerCableMasterData(4, $event)">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(powerCableDataForm.get('installationType')?.dirty || powerCableDataForm.get('installationType')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['installationType'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- installationMethod -->
+        <div *ngIf="!hideInsallationMethodDropdown" class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="installationMethod" class="ml-1 mb-2">Installation Method <span
+              class="required">*</span></label>
+          <p-dropdown [options]="cableInstallationMethodsList" optionLabel="value" id="installationMethod"
+            styleClass="custom-drop-down" formControlName="installationMethod" placeholder="Select Installation Method"
+            (onChange)="getPowerCableMasterData(5, $event)">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <ng-container *ngIf="!hideInsallationMethodDropdown">
+          <div
+            *ngIf="(powerCableDataForm.get('installationMethod')?.dirty || powerCableDataForm.get('installationMethod')?.touched)"
+            class="error-container mt-2">
+            <div *ngIf="!powerCableDataForm.controls['installationMethod'].value" class="error-message">
+              {{requiredField}}
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- crossSectionalArea -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="crossSectionalArea" class="ml-1 mb-2">Cross Sectional Area (mm*mm) <span
+              class="required">*</span></label>
+          <p-dropdown [options]="cableCrossSectionalAreaList" optionLabel="value" id="crossSectionalArea"
+            styleClass="custom-drop-down" formControlName="crossSectionalArea" placeholder="Select Cross Sectional Area"
+            (onChange)="getPowerCableMasterData(6, $event)">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(powerCableDataForm.get('crossSectionalArea')?.dirty || powerCableDataForm.get('crossSectionalArea')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['crossSectionalArea'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- iMaxValue -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="iMaxValue" class="ml-1 mb-2">Maximum current value (A) <span class="required">*</span></label>
+          <input pInputText id="iMaxValue" formControlName='iMaxValue' placeholder="Enter Maximum Current Value" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(powerCableDataForm.get('iMaxValue')?.dirty || powerCableDataForm.get('iMaxValue')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['iMaxValue'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div
+            *ngIf="powerCableDataForm.controls['iMaxValue'].value <= 0 || powerCableDataForm.get('iMaxValue')?.hasError('pattern')"
+            class="error-message">
+            &nbsp;Please enter a valid value. The value must be greater than 0.
+          </div>
+        </div>
+
+        <!-- inputCurrent -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="inputCurrent" class="ml-1 mb-2">Input Current (A) <span class="required">*</span></label>
+          <input pInputText id="inputCurrent" formControlName='inputCurrent' placeholder="Enter Input Current" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(powerCableDataForm.get('inputCurrent')?.dirty || powerCableDataForm.get('inputCurrent')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['inputCurrent'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="powerCableDataForm.get('inputCurrent')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- length -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="length" class="ml-1 mb-2">Length (m) <span class="required">*</span></label>
+          <input pInputText id="length" formControlName='length' placeholder="Enter Length" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(powerCableDataForm.get('length')?.dirty || powerCableDataForm.get('length')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!powerCableDataForm.controls['length'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="powerCableDataForm.get('length')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <div class="col-12 flex flex-row justify-content-end mt-5 pb-3" style="height: 3rem;">
+          <button [label]="(editDataId == -1) ? 'ADD' : 'UPDATE'" class="save-btn" pButton (click)="updateData(1)"
+            [disabled]="!powerCableDataForm.controls['description'].value || 
+                            (hideInsallationMethodDropdown ? powerCableDataForm.controls['installationMethod'].value : !powerCableDataForm.controls['installationMethod'].value) || 
+                            !powerCableDataForm.controls['conductorTemperature'].value || !powerCableDataForm.controls['arrangementType'].value ||
+                            !powerCableDataForm.controls['installationType'].value || !powerCableDataForm.controls['insulation'].value || !powerCableDataForm.controls['crossSectionalArea'].value ||
+                            !powerCableDataForm.controls['inputCurrent'].value || !powerCableDataForm.controls['length'].value ||
+                            !powerCableDataForm.controls['iMaxValue'].value || powerCableDataForm.get('crossSectionalArea')?.hasError('pattern') || powerCableDataForm.get('inputCurrent')?.hasError('pattern') ||
+                            powerCableDataForm.get('length')?.hasError('pattern') || powerCableDataForm.get('iMaxValue')?.hasError('pattern') ||
+                            powerCableDataForm.controls['iMaxValue'].value <= 0"></button>
+        </div>
+      </form>
+      <!-- </p-scrollPanel> -->
+    </div>
+  </div>
+</p-dialog>
+
+<!-- Add bus bar modal  -->
+<!-- <p-dialog [modal]="true" [visible]="false" class="edit-project-main-data"> -->
+<p-dialog [modal]="true" [(visible)]="isShowAddBusBarModel" class="edit-project-main-data"
+  (onHide)="onCloseEditModal()">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #185ADB;">Add a Bus Bar </h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 cubicle-overview-modal-content">
+      <!-- <p-scrollPanel [style]="{width: '100%', height: '44rem'}"> -->
+      <form [formGroup]="busBarDataForm">
+
+        <!-- description -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="description" class="ml-1 mb-2">Description <span class="required">*</span></label>
+          <input pInputText id="description" formControlName='description' placeholder="Enter Description" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(busBarDataForm.get('description')?.dirty || busBarDataForm.get('description')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!busBarDataForm.controls['description'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- Bus-BarType -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="crossSectionalType" class="ml-1 mb-2">Bus Bar Type <span class="required">*</span></label>
+          <p-dropdown [options]="busBarTypeList" optionLabel="label" id="crossSectionalType"
+            styleClass="custom-drop-down" formControlName="busBarType" (onChange)="getSizeListByBusbarType($event)"
+            placeholder="Select Bus Bar Type">
+          </p-dropdown>
+        </div>
+        <!-- conductorTemperature -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="installationMethod" class="ml-1 mb-2">Conductor Temperature (&#8451;) <span
+              class="required">*</span></label>
+          <p-dropdown [options]="conductorTemperatureList" optionLabel="temperature" id="conductorTemperature"
+            styleClass="custom-drop-down" formControlName="conductorTemperature"
+            placeholder="Select Conductor Temperature">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(busBarDataForm.get('busBarType')?.dirty || busBarDataForm.get('busBarType')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!busBarDataForm.controls['busBarType'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(busBarDataForm.get('busBarType')?.dirty || busBarDataForm.get('busBarType')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!busBarDataForm.controls['busBarType'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- heightAndThickness -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="heightAndThickness" class="ml-1 mb-2">Size (mm*mm) <span class="required">*</span></label>
+          <p-dropdown [options]="hightAndThicknessList" optionLabel="value" id="heightAndThickness"
+            styleClass="custom-drop-down" formControlName="heightAndThickness" placeholder="Select Size">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(busBarDataForm.get('heightAndThickness')?.dirty || busBarDataForm.get('heightAndThickness')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!busBarDataForm.controls['heightAndThickness'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- inputCurrent -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="inputCurrent" class="ml-1 mb-2">Input Current (A) <span class="required">*</span></label>
+          <input pInputText id="inputCurrent" formControlName='inputCurrent' placeholder="Enter Input Current" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(busBarDataForm.get('inputCurrent')?.dirty || busBarDataForm.get('inputCurrent')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!busBarDataForm.controls['inputCurrent'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="busBarDataForm.get('inputCurrent')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- length -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="length" class="ml-1 mb-2">Length (mm) <span class="required">*</span></label>
+          <input pInputText id="length" formControlName='busBarlength' placeholder="Enter Length" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(busBarDataForm.get('busBarlength')?.dirty || busBarDataForm.get('busBarlength')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!busBarDataForm.controls['busBarlength'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="busBarDataForm.get('busBarlength')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <div class="col-12 flex flex-row justify-content-end mt-5 pb-3" style="height: 3rem;">
+          <button [label]="(editDataId == -1) ? 'ADD' : 'UPDATE'" class="save-btn" pButton
+            [disabled]="!busBarDataForm.controls['description'].value || !busBarDataForm.controls['busBarType'].value
+            || !busBarDataForm.controls['heightAndThickness'].value || !busBarDataForm.controls['inputCurrent'].value || busBarDataForm.get('inputCurrent')?.hasError('pattern')
+            || !busBarDataForm.controls['busBarlength'].value || busBarDataForm.get('busBarlength')?.hasError('pattern')" (click)="updateData(2)"></button>
+        </div>
+      </form>
+      <!-- </p-scrollPanel> -->
+    </div>
+  </div>
+</p-dialog>
+
+<!-- Add Switchgear modal  -->
+<!-- <p-dialog [modal]="true" [visible]="false" class="edit-project-main-data"> -->
+<p-dialog [modal]="true" [(visible)]="isShowAddSwitchgearModel" class="edit-project-main-data"
+  (onHide)="onCloseEditModal()">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #185ADB;">Add a Switchgear </h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 cubicle-overview-modal-content">
+      <!-- <p-scrollPanel [style]="{width: '100%', height: '44rem'}"> -->
+      <form [formGroup]="switchgearDataForm">
+
+        <!-- manufacture -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="manufacture" class="ml-1 mb-2">Manufacturer <span class="required">*</span></label>
+          <p-dropdown [options]="manufactureList" optionLabel="value" id="manufacture" styleClass="custom-drop-down"
+            formControlName="manufacture" (onChange)="getSwitchGearMasterData(2, $event)"
+            placeholder="Select Manufacturer">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(switchgearDataForm.get('manufacture')?.dirty || switchgearDataForm.get('manufacture')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!switchgearDataForm.controls['manufacture'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- type -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="type" class="ml-1 mb-2">Type <span class="required">*</span></label>
+          <p-dropdown [options]="switchGearTypeList" optionLabel="value" id="type" styleClass="custom-drop-down"
+            formControlName="type" (onChange)="getSwitchGearMasterData(3, $event)" placeholder="Select Type">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(switchgearDataForm.get('type')?.dirty || switchgearDataForm.get('type')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!switchgearDataForm.controls['type'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- range -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="range" class="ml-1 mb-2">Range <span class="required">*</span></label>
+          <p-dropdown [options]="switchGearRangeList" optionLabel="value" id="range" styleClass="custom-drop-down"
+            formControlName="range" (onChange)="getSwitchGearMasterData(4, $event)" placeholder="Select Range">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(switchgearDataForm.get('range')?.dirty || switchgearDataForm.get('range')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!switchgearDataForm.controls['range'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- Model Name -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="modalName" class="ml-1 mb-2">Model Name <span class="required">*</span></label>
+          <p-dropdown [options]="switchGearModalList" optionLabel="value" id="modalName" styleClass="custom-drop-down"
+            formControlName="modalName" (onChange)="getSwitchGearMasterData(5, $event)" placeholder="Select Model Type">
+          </p-dropdown>
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(switchgearDataForm.get('modalName')?.dirty || switchgearDataForm.get('modalName')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!switchgearDataForm.controls['modalName'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- quantity -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="quantity" class="ml-1 mb-2">Quantity <span class="required">*</span></label>
+          <input pInputText id="quantity" formControlName='quantity' placeholder="Enter Quantity" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(switchgearDataForm.get('quantity')?.dirty || switchgearDataForm.get('quantity')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!switchgearDataForm.controls['quantity'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="switchgearDataForm.get('quantity')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- operatingCurrent -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="operatingCurrent" class="ml-1 mb-2">Operating Current <span class="required">*</span></label>
+          <input pInputText id="operatingCurrent" formControlName='operatingCurrent'
+            placeholder="Enter Operating Current" />
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(switchgearDataForm.get('operatingCurrent')?.dirty || switchgearDataForm.get('operatingCurrent')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!switchgearDataForm.controls['operatingCurrent'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="switchgearDataForm.get('operatingCurrent')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <div class="col-12 flex flex-row justify-content-end mt-5 mb-3">
+          <button [label]="(editDataId == -1) ? 'ADD' : 'UPDATE'" class="save-btn" pButton
+            [disabled]="!switchgearDataForm.controls['manufacture'].value || !switchgearDataForm.controls['type'].value
+            || !switchgearDataForm.controls['range'].value || !switchgearDataForm.controls['modalName'].value 
+            || !switchgearDataForm.controls['quantity'].value || switchgearDataForm.get('quantity')?.hasError('pattern')
+            || !switchgearDataForm.controls['operatingCurrent'].value || switchgearDataForm.get('operatingCurrent')?.hasError('pattern')" (click)="updateData(3)"></button>
+        </div>
+      </form>
+      <!-- </p-scrollPanel> -->
+    </div>
+  </div>
+</p-dialog>
+
+<!-- Add Custom switchgear modal  -->
+<!-- <p-dialog [modal]="true" [visible]="false" class="edit-project-main-data" > -->
+<p-dialog [modal]="true" [(visible)]="isShowAddCustomSwitchgearModel" class="edit-project-main-data"
+  (onHide)="onCloseEditModal()">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #185ADB;">Add a Custom Switchgear </h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 cubicle-overview-modal-content">
+      <!-- <p-scrollPanel [style]="{width: '100%', height: '44rem'}"> -->
+      <form [formGroup]="customSwitchgearDataForm">
+
+        <!-- manufacturer -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="manufacturer" class="ml-1 mb-2">Manufacturer <span class="required">*</span></label>
+          <input pInputText id="manufacturer" formControlName='manufacturer' placeholder="Enter Manufacturer Name" />
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(customSwitchgearDataForm.get('manufacturer')?.dirty || customSwitchgearDataForm.get('manufacturer')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!customSwitchgearDataForm.controls['manufacturer'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- model -->
+        <div class="grid form-field mt-4 flex flex-column text-left">
+          <label htmlFor="model" class="ml-1 mb-2">Model Name <span class="required">*</span></label>
+          <input pInputText id="quantity" formControlName='model' placeholder="Enter Model Name" />
+          <!-- <p-dropdown [options]="cubicleOverviewMasterDataVM?.customerSwitchgearDataVMs?.modalList !" optionLabel="description" id="model" styleClass="custom-drop-down" formControlName="model" placeholder="Select Model Type"> -->
+          <!-- </p-dropdown> -->
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(customSwitchgearDataForm.get('model')?.dirty || customSwitchgearDataForm.get('model')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!customSwitchgearDataForm.controls['model'].value" class="error-message">
+            {{requiredField}}
+          </div>
+        </div>
+
+        <!-- quantity -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="quantity" class="ml-1 mb-2">Quantity <span class="required">*</span></label>
+          <input pInputText id="quantity" formControlName='quantity' placeholder="Enter Quantity" />
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(customSwitchgearDataForm.get('quantity')?.dirty || customSwitchgearDataForm.get('quantity')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!customSwitchgearDataForm.controls['quantity'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="customSwitchgearDataForm.get('quantity')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- rating -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="rating" class="ml-1 mb-2">Rating <span class="required">*</span></label>
+          <input pInputText id="rating" formControlName='rating' placeholder="Enter Rating" />
+        </div>
+
+        <!-- validation error  -->
+        <div *ngIf="(customSwitchgearDataForm.get('rating')?.dirty || customSwitchgearDataForm.get('rating')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!customSwitchgearDataForm.controls['rating'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="customSwitchgearDataForm.get('rating')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <!-- unitPowerLoss -->
+        <div class="grid form-field mt-4">
+          <label htmlFor="unitPowerLoss" class="ml-1 mb-2">Unit Power Loss <span class="required">*</span></label>
+          <input pInputText id="unitPowerLoss" formControlName='unitPowerLoss' placeholder="Enter Unit Power Loss" />
+        </div>
+
+        <!-- validation error  -->
+        <div
+          *ngIf="(customSwitchgearDataForm.get('unitPowerLoss')?.dirty || customSwitchgearDataForm.get('unitPowerLoss')?.touched)"
+          class="error-container mt-2">
+          <div *ngIf="!customSwitchgearDataForm.controls['unitPowerLoss'].value" class="error-message">
+            {{requiredField}}
+          </div>
+          <div *ngIf="customSwitchgearDataForm.get('unitPowerLoss')?.hasError('pattern')" class="error-message">
+            &nbsp;{{enterValidInput}}
+          </div>
+        </div>
+
+        <div class="col-12 flex flex-row justify-content-end mt-5 mb-3">
+          <button [label]="(editDataId == -1) ? 'ADD' : 'UPDATE'" class="save-btn" pButton [disabled]="!customSwitchgearDataForm.controls['manufacturer'].value
+            || !customSwitchgearDataForm.controls['model'].value || !customSwitchgearDataForm.controls['quantity'].value ||
+            customSwitchgearDataForm.get('quantity')?.hasError('pattern') || !customSwitchgearDataForm.controls['rating'].value
+            || customSwitchgearDataForm.get('rating')?.hasError('pattern') || !customSwitchgearDataForm.controls['unitPowerLoss'].value
+            || customSwitchgearDataForm.get('unitPowerLoss')?.hasError('pattern')" (click)="updateData(4)"></button>
+        </div>
+      </form>
+      <!-- </p-scrollPanel> -->
+    </div>
+  </div>
+</p-dialog>
+
+<!-- Delete confirmation modal  -->
+<p-dialog [modal]="true" [(visible)]="isShowDeleteConfirmationPopup" class="edit-project-main-data">
+  <ng-template pTemplate="header">
+    <h5 style="width: 100%; text-align: center; color: #bc351f;">Delete a {{deleteText}}</h5>
+  </ng-template>
+  <div class="grid">
+    <div class="col-12 cubicle-overview-delete-confirmation-modal-content">
+      <p>Are you sure you want to delete this record ?</p>
+      <p>This action can't be undone.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="col-12 text-right mb-5 pr-5">
+      <button pButton class="delete-btn" (click)="confirmDeleteData(referenceId, activeIndex)">DELETE</button>
+    </div>
+  </div>
+</p-dialog>
+
+<div class="col-12 md:col-6 lg:col-5 pl-5 pr-4 " *ngIf="isGettingData">
+  <div class="kiktemp-loader">
+    <img src="assets/img/kikblox_logo_rounded.webp" alt="New Project Image" class="spinner" />
+    <div class="loading-text">Loading...</div>
+  </div>
+</div>

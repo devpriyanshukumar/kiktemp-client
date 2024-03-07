@@ -1,0 +1,104 @@
+<div class="content-body distributor-management">
+    <h4 class="page-header">Distributor Management</h4>
+    <div class="card">
+
+        <div class="search-container">
+            <div class="p-inputgroup col-12 sm:col-5">
+                <span class="p-inputgroup-addon">
+                    <i class="fas fa-search"></i>
+                </span>
+                <input title="Search by Organization Name / Contact Person Name / Email" pInputText
+                    placeholder="Search by Organization Name / Contact Person Name / Email"
+                    (keyup)="searchDistributor($event)">
+            </div>
+        </div>
+
+        <div *ngIf="searchResultDataVM.length !== 0">
+
+            <p-table [value]="searchResultDataVM" styleClass="p-datatable-striped"
+                [tableStyle]="{'min-width': '50rem'}">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="JOINED_DATE" style="width: 10%;">Date <p-sortIcon
+                                [field]="'JOINED_DATE'"></p-sortIcon>
+                        </th>
+                        <th style="width: 20%;">Organization Name</th>
+                        <th style="width: 15%;">Contact Person Name</th>
+                        <th style="width: 10%;">Email</th>
+                        <th style="width: 15%;">Country</th>
+                        <th style="width: 15%;">Status</th>
+                        <th style="width: 15%;">Action</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-distributor>
+                    <tr>
+                        <td style="text-align: center;">{{distributor?.JOINED_DATE}}</td>
+                        <td style="text-align: center;" [title]="distributor?.CHILD_ORGANIZATION">{{distributor?.CHILD_ORGANIZATION | truncate: 25}}
+                        </td>
+                        <td style="text-align: center;" [title]="distributor?.CHILD_NAME">{{distributor?.CHILD_NAME | truncate: 20}}</td>
+                        <td style="text-align: center;" [title]="distributor?.CHILD_EMAIL">{{distributor?.CHILD_EMAIL | truncate: 25}}</td>
+                        <td style="text-align: center;">{{distributor?.CHILD_COUNTRY}}</td>
+                        <td style="text-align: center;">{{distributor?.CHILD_STATUS | uppercase}}</td>
+                        <td>
+                            <div class="action-btn-row">
+                                <!-- Navigate -->
+                                <button [disabled]="distributor?.CHILD_STATUS === removed"
+                                    [ngClass]="distributor?.CHILD_STATUS === removed ? disabled: ''"
+                                    title="User Overview" class="action-btn"
+                                    (click)="clickNavigate(distributor?.CHILD_USER_ID, distributor?.CHILD_USER_TYPE)"><i
+                                        class="fa-solid fa-square-arrow-up-right navigate"></i></button>
+
+                                <!-- View Customers -->
+                                <button title="View Customer" class="action-btn"
+                                    (click)="viewCustomers(distributor?.CHILD_USER_ID, distributor?.CHILD_ORGANIZATION)">
+                                    <i class="fa-solid fa-eye view-customers"></i>
+                                </button>
+
+                                <!-- Suspend -->
+                                <button *ngIf="distributor?.CHILD_STATUS !== suspended"
+                                    [disabled]="distributor?.CHILD_STATUS === removed"
+                                    [ngClass]="distributor?.CHILD_STATUS === removed ? disabled: ''" title="Suspend User"
+                                    class="action-btn"
+                                    (click)="clickSuspend(distributor?.CHILD_USER_ID,distributor?.CHILD_NAME)">
+                                    <i class="fa-solid fa-user-clock suspend"></i>
+                                </button>
+
+                                <!-- Unsuspend -->
+                                <button *ngIf="distributor?.CHILD_STATUS === suspended"
+                                    [disabled]="distributor?.CHILD_STATUS === removed"
+                                    [ngClass]="distributor?.CHILD_STATUS === removed ? disabled: ''"
+                                    title="Unsuspend User" class="action-btn"
+                                    (click)="clickUnsuspend(distributor?.CHILD_USER_ID,distributor?.CHILD_NAME)">
+                                    <i class="fa-solid fa-user-check unsuspend"></i>
+                                </button>
+
+                                <!-- Removed -->
+                                <button [disabled]="distributor?.CHILD_STATUS === removed"
+                                    [ngClass]="distributor?.CHILD_STATUS === removed ? disabled: ''" title="Remove User"
+                                    class="action-btn"
+                                    (click)="clickRemove(distributor?.CHILD_USER_ID,distributor?.CHILD_NAME)"><i
+                                        class="fa-solid fa-user-xmark remove"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <div class="no-distributors" *ngIf="searchResultDataVM.length === 0">
+            <h3>No Distributors found!</h3>
+            <img src="../../../assets/img/no_data.webp" class="no-data-img">
+        </div>
+    </div>
+
+    <div *ngIf="searchResultDataVM.length !== 0">
+        <p-paginator (onPageChange)="onPaginate($event)" [first]="first" [pageLinkSize]="3" [rows]="tableRowsPerPage"
+            [totalRecords]="totalResults"></p-paginator>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+    <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+    <div class="loading-text">Loading...</div>
+</div>

@@ -1,0 +1,94 @@
+@mixin shadow {
+    -webkit-box-shadow: 0px 0px 8px 0px $shadow-cl;
+    -moz-box-shadow: 0px 0px 8px 0px $shadow-cl;
+    box-shadow: 0px 0px 8px 0px $shadow-cl;
+}
+
+@mixin dark-shadow {
+    -webkit-box-shadow: 2px 4px 8px 0px #808080;
+    -moz-box-shadow: 2px 4px 8px 0px #808080;
+    box-shadow: 2px 4px 8px 0px #808080;
+}
+
+@mixin light-shadow {
+    -webkit-box-shadow: 1px 1px 2px 1px #eee;
+    -moz-box-shadow: 1px 1px 2px 1px #eee;
+    box-shadow: 1px 1px 2px 1px #eee;
+}
+@mixin new-shadow {
+    -webkit-box-shadow: 0px 2px 5px 0px  #c4cbde;
+    -moz-box-shadow: 0px 2px 5px 0px  #c4cbde;
+    box-shadow: 0px 2px 5px 0px  #c4cbde;
+}
+
+@mixin theme-shadow {
+    -webkit-box-shadow: 1px 1px 2px 1px $prime-cl;
+    -moz-box-shadow: 1px 1px 2px 1px $prime-cl;
+    box-shadow: 1px 1px 2px 1px $prime-cl;
+}
+
+@mixin switch-shadow {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.13725) 0px 1px 1px 0px,
+        rgba(0, 0, 0, 0.11765) 0px 2px 1px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.13725) 0px 1px 1px 0px,
+        rgba(0, 0, 0, 0.11765) 0px 2px 1px -1px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.13725) 0px 1px 1px 0px,
+        rgba(0, 0, 0, 0.11765) 0px 2px 1px -1px;
+}
+
+@mixin link($back-cl: $prime-cl, $txt-cl: $inv-txt-cl) {
+    background-color: $back-cl;
+    color: $txt-cl;
+    text-decoration: none;
+}
+
+@mixin btn {
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+@mixin btn-hover($color) {
+    
+    background-color: $color;
+    border-color: $color;
+    &:enabled {
+        &:active,
+        &:focus,
+        &:hover {
+            opacity: 0.8;
+            border-color: $color;
+        }
+    }
+}
+
+@mixin inline-msg($color, $icon) {
+    color: $color;
+    background-color: transparent;
+    border-color: transparent;
+
+    .ui-messages-icon {
+        &.fa fa-check:before {
+            content: $icon;
+        }
+    }
+}
+
+@mixin alert-color($color) {
+    border-left: 6px solid $color;
+
+    .ui-growl-title {
+        color: $color;
+    }
+}
+
+@mixin switch-shadow {
+    -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.13725) 0px 1px 1px 0px,
+        rgba(0, 0, 0, 0.11765) 0px 2px 1px -1px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.13725) 0px 1px 1px 0px,
+        rgba(0, 0, 0, 0.11765) 0px 2px 1px -1px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.13725) 0px 1px 1px 0px,
+        rgba(0, 0, 0, 0.11765) 0px 2px 1px -1px;
+}

@@ -1,0 +1,37 @@
+<div class="remove-project-modal">
+    <p class="mt-2">{{content}}</p>
+
+    <form [formGroup]="passwordForm">
+        <div class="grid">
+            <div class="col-12 sm:col-10">
+                <div class="p-input-icon-left">
+                    <i class="icon fas fa-key"></i>
+                    <div class="password-input">
+                        <input [type]="passwordFieldType" pInputText #password class="input-field"
+                            placeholder="Enter Password" formControlName="password" />
+                        <button type="button" (click)="togglePasswordVisibility()">
+                            <i class="icon fas"
+                                [ngClass]="{'fa-eye': passwordFieldType === 'password', 'fa-eye-slash': passwordFieldType === 'text'}"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="required"
+                    *ngIf="passwordForm.controls['password'].hasError('required') && passwordForm.controls['password'].touched">
+                    {{requiredField}}
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <div class="btn-row">
+        <button pButton label="CANCEL" class="close-btn" (click)="close()"></button>
+        <button pButton class="remove-btn" [disabled]="passwordForm.invalid" (click)="deleteProject()">
+            {{ isGettingData ? 'REMOVING PROJECT' : 'REMOVE PROJECT'}}</button>
+    </div>
+</div>
+
+<p-toast></p-toast>
+<div class="kiktemp-loader" *ngIf="isGettingData">
+    <img src="../../../assets/img/kikblox_logo_rounded.webp" alt="kiktemp-loader" class="spinner" />
+    <div class="loading-text">Loading...</div>
+</div>
